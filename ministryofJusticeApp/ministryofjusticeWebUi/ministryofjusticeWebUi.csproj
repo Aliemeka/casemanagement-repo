@@ -197,6 +197,9 @@
   <ItemGroup>
     <Content Include="Assets\css\sb-admin-2.css" />
     <Content Include="Assets\css\sb-admin-2.min.css" />
+    <Content Include="Assets\img\auth-bg.jpg" />
+    <Content Include="Assets\img\ministry-of-justice-login.jpg" />
+    <Content Include="Assets\img\ministry-of-justice-white.jpg" />
     <Content Include="Assets\img\undraw_posting_photo.svg" />
     <Content Include="Assets\img\undraw_profile.svg" />
     <Content Include="Assets\img\undraw_profile_1.svg" />
