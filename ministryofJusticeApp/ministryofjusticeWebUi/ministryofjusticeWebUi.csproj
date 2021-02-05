@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -187,7 +187,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HelperMethods\createRoleService.cs" />
     <Compile Include="Infrastructures\NinjectDependenceResolver.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -1885,28 +1887,48 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\homecss\css\animate.css" />
+    <Content Include="Content\homecss\css\aos.css" />
+    <Content Include="Content\homecss\css\flaticon.css" />
+    <Content Include="Content\homecss\css\icomoon.css" />
+    <Content Include="Content\homecss\css\ionicons.min.css" />
+    <Content Include="Content\homecss\css\magnific-popup.css" />
+    <Content Include="Content\homecss\css\open-iconic-bootstrap.min.css" />
+    <Content Include="Content\homecss\css\owl.carousel.min.css" />
+    <Content Include="Content\homecss\css\owl.theme.default.min.css" />
+    <Content Include="Content\homecss\css\owl.video.play.html" />
+    <Content Include="Content\homecss\css\style.css" />
+    <Content Include="Content\homecss\fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="Content\homecss\fonts\icomoon\icomoonccfb.svg" />
+    <Content Include="Content\homecss\fonts\ionicons\fonts\ionicons580c.svg" />
+    <Content Include="Content\homecss\fonts\open-iconic\open-iconic.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Static\fonts\flaticon\font\Flaticon.eot" />
-    <Content Include="Static\fonts\flaticon\font\Flaticon.ttf" />
-    <Content Include="Static\fonts\flaticon\font\Flaticon.woff" />
-    <Content Include="Static\fonts\flaticon\font\Flaticond41d.eot" />
-    <Content Include="Static\fonts\icomoon\icomoonccfb.eot" />
-    <Content Include="Static\fonts\icomoon\icomoonccfb.ttf" />
-    <Content Include="Static\fonts\icomoon\icomoonccfb.woff" />
-    <Content Include="Static\fonts\ionicons\fonts\ionicons580c.eot" />
-    <Content Include="Static\fonts\ionicons\fonts\ionicons580c.ttf" />
-    <Content Include="Static\fonts\ionicons\fonts\ionicons580c.woff" />
-    <Content Include="Static\fonts\ionicons\fonts\ionicons580c.woff2" />
-    <Content Include="Static\fonts\open-iconic\open-iconic.eot" />
-    <Content Include="Static\fonts\open-iconic\open-iconic.otf" />
-    <Content Include="Static\fonts\open-iconic\open-iconic.ttf" />
-    <Content Include="Static\fonts\open-iconic\open-iconic.woff" />
-    <Content Include="Static\fonts\open-iconic\open-iconicd41d.eot" />
+    <Content Include="Scripts\homejs\js\aos.js" />
+    <Content Include="Scripts\homejs\js\bootstrap.min.js" />
+    <Content Include="Scripts\homejs\js\google-map.js" />
+    <Content Include="Scripts\homejs\js\jquery-migrate-3.0.1.min.js" />
+    <Content Include="Scripts\homejs\js\jquery.animateNumber.min.js" />
+    <Content Include="Scripts\homejs\js\jquery.easing.1.3.js" />
+    <Content Include="Scripts\homejs\js\jquery.magnific-popup.min.js" />
+    <Content Include="Scripts\homejs\js\jquery.min.js" />
+    <Content Include="Scripts\homejs\js\jquery.stellar.min.js" />
+    <Content Include="Scripts\homejs\js\jquery.waypoints.min.js" />
+    <Content Include="Scripts\homejs\js\main.js" />
+    <Content Include="Scripts\homejs\js\owl.carousel.min.js" />
+    <Content Include="Scripts\homejs\js\popper.min.js" />
+    <Content Include="Scripts\homejs\js\scrollax.min.js" />
+    <Content Include="Static\css\aos.css" />
+    <Content Include="Static\css\bootstrap.min.css" />
+    <Content Include="Static\css\jquery.fancybox.min.css" />
+    <Content Include="Static\css\owl.carousel.min.css" />
+    <Content Include="Static\css\owl.theme.default.min.css" />
+    <Content Include="Static\css\owl.video.play.html" />
+    <Content Include="Static\css\style.css" />
     <Content Include="Assets\scss\navs\_global.scss" />
     <Content Include="Assets\scss\navs\_sidebar.scss" />
     <Content Include="Assets\scss\navs\_topbar.scss" />
@@ -2079,46 +2101,27 @@
     <Content Include="Assets\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Assets\vendor\jquery\jquery.min.map" />
     <Content Include="Assets\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Content\homecss\fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="Content\homecss\fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="Content\homecss\fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="Content\homecss\fonts\flaticon\font\Flaticond41d.eot" />
+    <Content Include="Content\homecss\fonts\icomoon\icomoonccfb.eot" />
+    <Content Include="Content\homecss\fonts\icomoon\icomoonccfb.ttf" />
+    <Content Include="Content\homecss\fonts\icomoon\icomoonccfb.woff" />
+    <Content Include="Content\homecss\fonts\ionicons\fonts\ionicons580c.eot" />
+    <Content Include="Content\homecss\fonts\ionicons\fonts\ionicons580c.ttf" />
+    <Content Include="Content\homecss\fonts\ionicons\fonts\ionicons580c.woff" />
+    <Content Include="Content\homecss\fonts\ionicons\fonts\ionicons580c.woff2" />
+    <Content Include="Content\homecss\fonts\open-iconic\open-iconic.eot" />
+    <Content Include="Content\homecss\fonts\open-iconic\open-iconic.otf" />
+    <Content Include="Content\homecss\fonts\open-iconic\open-iconic.ttf" />
+    <Content Include="Content\homecss\fonts\open-iconic\open-iconic.woff" />
+    <Content Include="Content\homecss\fonts\open-iconic\open-iconicd41d.eot" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Static\css\animate.css" />
-    <Content Include="Static\css\aos.css" />
-    <Content Include="Static\css\flaticon.css" />
-    <Content Include="Static\css\icomoon.css" />
-    <Content Include="Static\css\ionicons.min.css" />
-    <Content Include="Static\css\magnific-popup.css" />
-    <Content Include="Static\css\open-iconic-bootstrap.min.css" />
-    <Content Include="Static\css\owl.carousel.min.css" />
-    <Content Include="Static\css\owl.theme.default.min.css" />
-    <Content Include="Static\css\owl.video.play.html" />
-    <Content Include="Static\css\style.css" />
+    <Content Include="Static\fonts\flaticon\font\flaticon.css" />
     <Content Include="Static\fonts\flaticon\font\Flaticon.svg" />
-    <Content Include="Static\fonts\icomoon\icomoonccfb.svg" />
-    <Content Include="Static\fonts\ionicons\fonts\ionicons580c.svg" />
-    <Content Include="Static\fonts\open-iconic\open-iconic.svg" />
-    <Content Include="Static\images\about.jpg" />
-    <Content Include="Static\images\bg_1.jpg" />
-    <Content Include="Static\images\bg_2.jpg" />
-    <Content Include="Static\images\bg_3.jpg" />
-    <Content Include="Static\images\bg_5.jpg" />
-    <Content Include="Static\images\image_1.jpg" />
-    <Content Include="Static\images\image_2.jpg" />
-    <Content Include="Static\images\image_3.jpg" />
-    <Content Include="Static\images\image_4.jpg" />
-    <Content Include="Static\images\image_5.jpg" />
-    <Content Include="Static\images\image_6.jpg" />
-    <Content Include="Static\images\person_1.jpg" />
-    <Content Include="Static\images\person_2.jpg" />
-    <Content Include="Static\images\person_3.jpg" />
-    <Content Include="Static\images\person_4.jpg" />
-    <Content Include="Static\images\project-1.jpg" />
-    <Content Include="Static\images\project-2.jpg" />
-    <Content Include="Static\images\project-3.jpg" />
-    <Content Include="Static\images\project-4.jpg" />
-    <Content Include="Static\images\project-5.jpg" />
-    <Content Include="Static\images\project-6.jpg" />
-    <Content Include="Static\images\project-7.jpg" />
-    <Content Include="Static\images\project-8.jpg" />
-    <Content Include="Static\images\project-9.jpg" />
+    <Content Include="Static\fonts\icomoon\fonts\icomoon1a44.svg" />
+    <Content Include="Static\fonts\icomoon\style.css" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -2128,21 +2131,29 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Static\images\2.jpg" />
+    <Content Include="Static\images\gal_1.jpg" />
+    <Content Include="Static\images\gal_2.jpg" />
+    <Content Include="Static\images\gal_3.jpg" />
+    <Content Include="Static\images\gal_4.jpg" />
+    <Content Include="Static\images\gal_5.jpg" />
+    <Content Include="Static\images\gal_6.jpg" />
+    <Content Include="Static\images\hero_bg.jpg" />
+    <Content Include="Static\images\image1.jpg" />
+    <Content Include="Static\images\person_1.jpg" />
+    <Content Include="Static\images\person_2.jpg" />
+    <Content Include="Static\images\person_3.jpg" />
+    <Content Include="Static\images\person_4.jpg" />
     <Content Include="Static\js\aos.js" />
     <Content Include="Static\js\bootstrap.min.js" />
-    <Content Include="Static\js\google-map.js" />
-    <Content Include="Static\js\jquery-migrate-3.0.1.min.js" />
+    <Content Include="Static\js\custom.js" />
+    <Content Include="Static\js\jquery-3.4.1.min.js" />
     <Content Include="Static\js\jquery.animateNumber.min.js" />
-    <Content Include="Static\js\jquery.easing.1.3.js" />
-    <Content Include="Static\js\jquery.magnific-popup.min.js" />
-    <Content Include="Static\js\jquery.min.js" />
-    <Content Include="Static\js\jquery.stellar.min.js" />
+    <Content Include="Static\js\jquery.fancybox.min.js" />
     <Content Include="Static\js\jquery.waypoints.min.js" />
-    <Content Include="Static\js\main.js" />
     <Content Include="Static\js\owl.carousel.min.js" />
     <Content Include="Static\js\popper.min.js" />
-    <Content Include="Static\js\scrollax.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2179,7 +2190,20 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+<<<<<<< ministryofJusticeApp/ministryofjusticeWebUi/ministryofjusticeWebUi.csproj
+    
+=======
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="Static\fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="Static\fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="Static\fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="Static\fonts\flaticon\font\Flaticon.woff2" />
+    <Content Include="Static\fonts\flaticon\font\Flaticond41d.eot" />
+    <Content Include="Static\fonts\icomoon\fonts\icomoon1a44.eot" />
+    <Content Include="Static\fonts\icomoon\fonts\icomoon1a44.ttf" />
+    <Content Include="Static\fonts\icomoon\fonts\icomoon1a44.woff" />
     <Content Include="Views\Shared\_AuthLayout.cshtml" />
+>>>>>>> ministryofJusticeApp/ministryofjusticeWebUi/ministryofjusticeWebUi.csproj
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
