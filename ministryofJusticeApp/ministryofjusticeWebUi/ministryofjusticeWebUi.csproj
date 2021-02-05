@@ -2189,10 +2189,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
+    <Content Include="Views\Shared\_AuthLayout.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
-<<<<<<< ministryofJusticeApp/ministryofjusticeWebUi/ministryofjusticeWebUi.csproj
-    
-=======
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
     <Content Include="Static\fonts\flaticon\font\Flaticon.eot" />
     <Content Include="Static\fonts\flaticon\font\Flaticon.ttf" />
@@ -2202,8 +2200,6 @@
     <Content Include="Static\fonts\icomoon\fonts\icomoon1a44.eot" />
     <Content Include="Static\fonts\icomoon\fonts\icomoon1a44.ttf" />
     <Content Include="Static\fonts\icomoon\fonts\icomoon1a44.woff" />
-    <Content Include="Views\Shared\_AuthLayout.cshtml" />
->>>>>>> ministryofJusticeApp/ministryofjusticeWebUi/ministryofjusticeWebUi.csproj
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
