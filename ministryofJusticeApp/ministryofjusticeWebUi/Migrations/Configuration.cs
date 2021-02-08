@@ -41,7 +41,6 @@ namespace ministryofjusticeWebUi.Migrations
             };
 
             //Creates a User and assign it to the role of  System Admin
-
             var result = manager.Create(systemAdmin, "Zxcvbn55@");
             if (result.Succeeded)
             {

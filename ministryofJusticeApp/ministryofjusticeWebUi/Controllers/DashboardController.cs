@@ -8,7 +8,7 @@ namespace ministryofjusticeWebUi.Controllers
 {
     public class DashboardController : Controller
     {
-        // GET: Dashboard
+        // GET: Dashboard/Index
         public ActionResult Index()
         {
             return View();

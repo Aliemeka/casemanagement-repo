@@ -25,26 +25,30 @@ namespace ministryofjusticeWebUi
               //        "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Static/css").Include(
+                 "~/Static/css/fonts/icomoon/style.css",
                 "~/Static/css/bootstrap.min.css",
+                 "~/Static/css/bootstrap-datepicker.css",
+                 "~/Static/css/jquery.fancybox.min.css",
                 "~/Static/css/owl.carousel.min.css",
                 "~/Static/css/owl.theme.default.min.css",
-                "~/Static/css/jquery.fancybox.min.css",
-                "~/Static/css/fonts/icomoon/style.css",
-                "~/Static/css/fonts/flaticon/font/flaticon.css",
+                "~/Static/fonts/flaticon/font/flaticon.css",
                 "~/Static/css/aos.css",
                 "~/Static/css/style.css"
                 ));
 
             bundles.Add(new ScriptBundle("~/Static/js").Include(
-                "~/Static/js/jquery-3.4.1.min.js",
+                "~/Static/js/jquery-3.3.1.min.js",
                 "~/Static/js/popper.min.js",
                 "~/Static/js/bootstrap.min.js",
                 "~/Static/js/owl.carousel.min.js",
+                "~/Static/js/jquery.sticky.js",
                 "~/Static/js/jquery.animateNumber.min.js",
                 "~/Static/js/jquery.waypoints.min.js",
                 "~/Static/js/jquery.fancybox.min.js",
+                "~/Static/js/jquery.easing.1.3.js",
+                "~/Static/js/bootstrap-datepicker.min.js",
                 "~/Static/js/aos.js",
-                "~/Static/js/custom.js"));
+                "~/Static/js/main.js"));
 
             bundles.Add(new ScriptBundle("~/Scripts/main").Include(
                 "~/Static/js/main.js"));
