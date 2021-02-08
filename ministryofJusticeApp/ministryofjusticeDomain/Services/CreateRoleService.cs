@@ -28,5 +28,12 @@ namespace ministryofjusticeDomain.Services
                 _roleManager.Create(role);
             }
         }
+
+        // Method to delete roles
+        public async Task DeleteRole(string roleName)
+        {
+            var del=_roleManager.FindByName(roleName);
+            await _roleManager.DeleteAsync(del);
+        }
     }
 }
