@@ -4,6 +4,7 @@ using ministryofjusticeWebUi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace ministryofjusticeWebUi.HelperMethods
@@ -31,6 +32,13 @@ namespace ministryofjusticeWebUi.HelperMethods
                 role.Name = roleName;
                 _roleManager.Create(role);
             }
+        }
+
+        // Method to delete roles
+        public async Task DeleteRole(string roleName)
+        {
+            var del=_roleManager.FindByName(roleName);
+            await _roleManager.DeleteAsync(del);
         }
     }
 }
