@@ -1,15 +1,19 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ministryofjusticeDomain.Entities;
+using System.Threading.Tasks;
 
 namespace ministryofjusticeDomain.Services
 {
-    public class CreateRoleService
+    /// <summary>
+    /// Service reponsible for adding roles, deleting roles and assigning roles
+    /// </summary>
+    public class RoleService
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public CreateRoleService(ApplicationDbContext context)
+        public RoleService(ApplicationDbContext context)
         {
             _userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
@@ -29,11 +33,18 @@ namespace ministryofjusticeDomain.Services
             }
         }
 
-        // Method to delete roles
+        /// <summary>
+        /// Method to delete roles
+        /// </summary>
+        /// <param name="roleName"></param>
+        /// <returns></returns>
         public async Task DeleteRole(string roleName)
         {
-            var del=_roleManager.FindByName(roleName);
-            await _roleManager.DeleteAsync(del);
+            if (_roleManager.RoleExists(roleName))
+            {
+                var del=_roleManager.FindByName(roleName);
+                await _roleManager.DeleteAsync(del);
+            }
         }
     }
 }
