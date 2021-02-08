@@ -35,21 +35,18 @@ namespace ministryofjusticeWebUi.Migrations
 
             var systemAdmin = new ApplicationUser()
             {
-                UserName = "SystemAdmin",
+                UserName = "systemadmin@ministryofjustice.com",
                 Email = "systemadmin@ministryofjustice.com",
                 EmailConfirmed = true
             };
 
             //Creates a User and assign it to the role of  System Admin
             var result = manager.Create(systemAdmin, "Zxcvbn55@");
-            if (result.Succeeded)
-            {
-                manager.AddToRole(systemAdmin.Id, "System Administrator");
-            }
+            if (result.Succeeded) manager.AddToRole(systemAdmin.Id, "System Administrator");
 
             var attorney = new ApplicationUser()
             {
-                UserName = "AttorneyGeneral",
+                UserName = "attorneygeneral@ministryofjustice.com",
                 Email = "attorneygeneral@ministryofjustice.com",
                 EmailConfirmed = true
             };
@@ -57,13 +54,7 @@ namespace ministryofjusticeWebUi.Migrations
             //Creates a User and assign it to the role of Attorney General
 
             result = manager.Create(attorney, "ASdf:lkj");
-            if (result.Succeeded)
-            {
-                manager.AddToRole(attorney.Id, "Attorney General");
-            }
-
-
-
+            if (result.Succeeded) manager.AddToRole(attorney.Id, "Attorney General");
         }
     }
 }

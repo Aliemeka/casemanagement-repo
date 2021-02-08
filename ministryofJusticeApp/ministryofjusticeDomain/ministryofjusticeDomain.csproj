@@ -14,4 +14,8 @@
     <PackageReference Include="Microsoft.AspNet.Identity.Owin" Version="2.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+  </ItemGroup>
+
 </Project>
