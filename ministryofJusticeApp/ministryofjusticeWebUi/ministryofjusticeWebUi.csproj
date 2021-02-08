@@ -189,6 +189,10 @@
     </Compile>
     <Compile Include="HelperMethods\createRoleService.cs" />
     <Compile Include="Infrastructures\NinjectDependenceResolver.cs" />
+    <Compile Include="Migrations\202102051423086_Role Seeding.cs" />
+    <Compile Include="Migrations\202102051423086_Role Seeding.Designer.cs">
+      <DependentUpon>202102051423086_Role Seeding.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -2222,6 +2226,11 @@
       <Project>{1da196c1-2404-45c8-a513-19a9f36a8c93}</Project>
       <Name>ministryofjusticeDomain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202102051423086_Role Seeding.resx">
+      <DependentUpon>202102051423086_Role Seeding.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
