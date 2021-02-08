@@ -2,21 +2,21 @@ namespace ministryofjusticeWebUi.Migrations
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using ministryofjusticeWebUi.HelperMethods;
-    using ministryofjusticeWebUi.Models;
+    using ministryofjusticeDomain.Services;
+    using ministryofjusticeDomain.Entities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ministryofjusticeWebUi.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ministryofjusticeWebUi.Models.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
