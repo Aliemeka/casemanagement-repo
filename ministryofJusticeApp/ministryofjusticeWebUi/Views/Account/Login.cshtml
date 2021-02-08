@@ -54,12 +54,12 @@
                                 @Html.LabelFor(m => m.Password,
                                     new { @class = "col-md-6 control-label" })
                                 <div>
-                                    @Html.TextBoxFor(m => m.Password,
+                                    @Html.PasswordFor(m => m.Password,
                                         new
                                         {
                                             @class = "form-control form-control-user",
                                             @id = "exampleInputPassword",
-                                            @placeholder = "Password"
+                                            @placeholder = "Enter Password..."
                                         })
                                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger small" })
                                 </div>
