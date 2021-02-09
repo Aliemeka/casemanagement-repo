@@ -71,6 +71,7 @@ namespace ministryofjusticeWebUi.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ModelState.AddModelError("", "Invalid login or password");
                 return View(model);
             }
 
