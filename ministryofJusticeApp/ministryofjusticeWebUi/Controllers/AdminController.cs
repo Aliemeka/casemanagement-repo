@@ -6,10 +6,12 @@ using System.Web.Mvc;
 
 namespace ministryofjusticeWebUi.Controllers
 {
+    [RoutePrefix("/Dashboard/Administration/")]
+    [Authorize(Roles = "System Administrator")]
     public class AdminController : Controller
     {
         // GET: Admin
-        public ActionResult Index()
+        public ActionResult ManageAccounts()
         {
             return View();
         }

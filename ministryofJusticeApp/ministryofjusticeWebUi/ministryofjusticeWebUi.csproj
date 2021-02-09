@@ -2249,7 +2249,7 @@
     <Content Include="Static\fonts\icomoon\fonts\icomoon1a44.eot" />
     <Content Include="Static\fonts\icomoon\fonts\icomoon1a44.ttf" />
     <Content Include="Static\fonts\icomoon\fonts\icomoon1a44.woff" />
-    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\ManageAccounts.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
