@@ -63,16 +63,35 @@ namespace ministryofjusticeWebUi
             bundles.Add(new StyleBundle("~/Assets/styles").Include(
                 "~/Assets/css/sb-admin-2.min.css"));
 
+            bundles.Add(new StyleBundle("~/Assets/main").Include(
+                    "~/Assets/css/styles.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/Assets/vendors").Include(
+                    "~/Assets/vendor/datatables/dataTables.bootstrap4.min.css",
+                    "~/Assets/vendor/daterangepicker/daterangepicker.css"
+                ));
+
             bundles.Add(new ScriptBundle("~/Assets/scripts").Include(
                 "~/Assets/vendor/jquery/jquery.min.js",
                 "~/Assets/vendor/bootstrap/js/bootstrap.bundle.min.js",
                 "~/Assets/vendor/jquery-easing/jquery.easing.min.js",
-                "~/Assets/js/sb-admin-2.min.js"
+                "~/Assets/js/sb-admin-2.min.js",
+                "~/Assets/js/scripts.js"
                 ));
             bundles.Add(new ScriptBundle("~/Assets/plugins").Include(
+                "~/Assets/vendor/email-decode/email-decode.min.js",
                 "~/Assets/vendor/chart.js/Chart.min.js",
                 "~/Assets/js/demo/chart-area-demo.js",
-                "~/Assets/js/demo/chart-pie-demo.js"
+                "~/Assets/js/demo/chart-pie-demo.js",
+                "~/Assets/js/demo/datatables-demo.js",
+                "~/Assets/vendor/moment/moment.min.js",
+                "~/Assets/vendor/daterangepicker/daterangepicker.min.js",
+                "~/Assets/js/demo/date-range-picker-demo.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/Assets/customizer").Include(
+                    "~/Assets/js/sb-customizer.js"
                 ));
         }
     }

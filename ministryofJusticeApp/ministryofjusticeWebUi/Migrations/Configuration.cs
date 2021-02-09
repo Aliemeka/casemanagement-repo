@@ -25,8 +25,21 @@ namespace ministryofjusticeWebUi.Migrations
 
             //Seeding of Roles  
 
+            context.Departments.AddOrUpdate(department => department.Id,
+                new Department()
+                {
+                    Id = 1,
+                    DepartmentName = "Administration"
+                },
+                new Department()
+                {
+                    Id = 2,
+                    DepartmentName = "Attorney General"
+                }
+            );
+
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            var role = new CreateRoleService(context);
+            var role = new RoleService(context);
 
             role.CreateRoles("System Administrator");
             role.CreateRoles("Attorney General");
