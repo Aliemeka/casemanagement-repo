@@ -1,122 +1,70 @@
 ﻿@{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Welcome";
     Layout = "/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<h1 class="h3 mb-4 text-gray-800">Home</h1>
-
-@*
-    <!-- Content Row -->
-    <div class="row">
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Earnings (Monthly)
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Earnings (Annual)
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Tasks
-                            </div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar"
-                                             style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                             aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pending Requests Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Pending Requests
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
+<header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+    <div class="container">
+        <div class="page-header-content pt-4">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto mt-4">
+                    <h1 class="page-header-title">
+                        <div class="page-header-icon"><i data-feather="file"></i></div>
+                        Welcome!
+                    </h1>
+                    <div class="page-header-subtitle">Use this blank page as a starting point for creating new pages inside your project!</div>
                 </div>
             </div>
         </div>
     </div>
-
-    <form>
-        <div class="form-group"><label for="exampleFormControlInput1">Email address</label><input class="form-control" id="exampleFormControlInput1" type="email" placeholder="name@example.com"></div>
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Example select</label><select class="form-control" id="exampleFormControlSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
+</header>
+<!-- Main page content-->
+<main class="container mt-n10">
+    <section class="row">
+        <div class="col-xl-4 mb-4">
+            <!-- Dashboard example card 1-->
+            <a class="card lift h-100" href="#!">
+                <div class="card-body d-flex justify-content-center flex-column">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="mr-3">
+                            <i class="feather-xl text-primary mb-3" data-feather="package"></i>
+                            <h5>Powerful Components</h5>
+                            <div class="text-muted small">To create informative visual elements on your pages</div>
+                        </div>
+                        <img src="assets/img/illustrations/browser-stats.svg" alt="..." style="width: 8rem" />
+                    </div>
+                </div>
+            </a>
         </div>
-        <div class="form-group">
-            <label for="exampleFormControlSelect2">Example multiple select</label><select class="form-control" id="exampleFormControlSelect2" multiple="">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
+        <div class="col-xl-4 mb-4">
+            <!-- Dashboard example card 2-->
+            <a class="card lift h-100" href="#!">
+                <div class="card-body d-flex justify-content-center flex-column">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="mr-3">
+                            <i class="feather-xl text-secondary mb-3" data-feather="book"></i>
+                            <h5>Documentation</h5>
+                            <div class="text-muted small">To keep you on track when working with our toolkit</div>
+                        </div>
+                        <img src="assets/img/illustrations/processing.svg" alt="..." style="width: 8rem" />
+                    </div>
+                </div>
+            </a>
         </div>
-        <div class="form-group"><label for="exampleFormControlTextarea1">Example textarea</label><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></div>
-    </form>
-*@
+        <div class="col-xl-4 mb-4">
+            <!-- Dashboard example card 3-->
+            <a class="card lift h-100" href="#!">
+                <div class="card-body d-flex justify-content-center flex-column">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="mr-3">
+                            <i class="feather-xl text-green mb-3" data-feather="layout"></i>
+                            <h5>Pages &amp; Layouts</h5>
+                            <div class="text-muted small">To help get you started when building your new UI</div>
+                        </div>
+                        <img src="assets/img/illustrations/windows.svg" alt="..." style="width: 8rem" />
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+</main>
