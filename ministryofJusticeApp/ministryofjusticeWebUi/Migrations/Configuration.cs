@@ -16,7 +16,7 @@ namespace ministryofjusticeWebUi.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ApplicationDbContext context)
+        protected override async void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
