@@ -33,7 +33,7 @@ namespace ministryofjusticeWebUi.Migrations
                 },
                 new Department()
                 {
-                    Id = 2, 
+                    Id = 2,
                     DepartmentName = "Attorney General"
                 }
             );
