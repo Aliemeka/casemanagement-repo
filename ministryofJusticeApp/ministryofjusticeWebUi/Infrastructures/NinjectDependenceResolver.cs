@@ -1,10 +1,10 @@
 ﻿using Ninject;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ministryofjusticeDomain.Entities;
+using ministryofjusticeDomain.Interfaces;
+using ministryofjusticeDomain.Repositories;
 
 namespace ministryofjusticeWebUi.Infrastructures
 {
@@ -30,6 +30,9 @@ namespace ministryofjusticeWebUi.Infrastructures
         private void AddBindings()
         {
             kernel.Bind(typeof(ApplicationDbContext)).ToSelf();
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
+            kernel.Bind<IDepartmentRepo>().To<DepartmentRepo>();
+            kernel.Bind<IUserManagerRepo>().To<UserManagerRepo>();
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System.Collections.Generic;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ministryofjusticeDomain.Entities;
 using System.Threading.Tasks;
@@ -10,12 +11,10 @@ namespace ministryofjusticeDomain.Services
     /// </summary>
     public class RoleService
     {
-        private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
         public RoleService(ApplicationDbContext context)
         {
-            _userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
         }
 
@@ -29,7 +28,7 @@ namespace ministryofjusticeDomain.Services
             {
                 var role = new IdentityRole();
                 role.Name = roleName;
-                _roleManager.Create(role);
+                _roleManager.CreateAsync(role);
             }
         }
 
