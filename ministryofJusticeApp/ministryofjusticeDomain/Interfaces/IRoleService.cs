@@ -4,15 +4,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using ministryofjusticeDomain.Entities;
 
 namespace ministryofjusticeDomain.Interfaces
 {
-    public interface IUserManagerRepo
+    public interface IRoleService
     {
-        IEnumerable<ApplicationUser> GetAllUsers();
-        IdentityResult CreateUser(ApplicationUser user);
         IEnumerable<IdentityRole> GetRoles();
+        void CreateRoles(string roleName);
+        void DeleteRole(string roleName);
         Task<IdentityResult> CreateRoleAsync(string roleName);
         Task<IdentityResult> DeleteRoleAsync(string roleId);
         Task<IdentityResult> AssignRoleAsync(string userId, string roleId);

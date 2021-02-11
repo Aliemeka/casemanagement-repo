@@ -65,6 +65,16 @@ namespace ministryofjusticeWebUi.Models
     public class RegisterViewModel
     {
         [Required]
+        [MaxLength(20)]
+        [Display(Name = "First name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [MaxLength(20)]
+        [Display(Name = "Last name")]
+        public string LastName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
