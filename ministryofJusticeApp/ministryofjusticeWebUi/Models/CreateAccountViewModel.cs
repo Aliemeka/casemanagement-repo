@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
+using ministryofjusticeDomain.Entities;
 
 namespace ministryofjusticeWebUi.Models
 {
@@ -18,9 +19,5 @@ namespace ministryofjusticeWebUi.Models
         [MaxLength(20)]
         [Display(Name = "Last name")]
         public string LastName { get; set; }
-
-        [Required]
-        [Display(Name = "Role")]
-        public string RoleName{ get; set; }
     }
 }
