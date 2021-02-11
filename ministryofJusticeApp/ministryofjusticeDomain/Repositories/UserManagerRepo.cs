@@ -34,7 +34,7 @@ namespace ministryofjusticeDomain.Repositories
         {
             var guid = Guid.NewGuid();
             var password = Convert.ToBase64String(guid.ToByteArray());
-            password = password.Replace("=", "");
+            password = password.Replace("=", ""); 
             var result = _userManager.Create(user, password);
             return result;
         }
