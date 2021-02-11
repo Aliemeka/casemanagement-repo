@@ -32,9 +32,15 @@ namespace ministryofjusticeDomain.Repositories
 
         public IdentityResult CreateUser(ApplicationUser user)
         {
-            var guid = Guid.NewGuid();
-            var password = Convert.ToBase64String(guid.ToByteArray());
-            password = password.Replace("=", ""); 
+            //generating user email address
+            var email = user.FirstName.ToLower() + user.LastName.ToLower() + "@ministryofjustice.com";
+            user.Email = email;
+            user.UserName = email;
+
+            //generating user password
+            var password = user.FirstName.ToLower()+"123@MOJ"; 
+
+            //create user
             var result = _userManager.Create(user, password);
             return result;
         }

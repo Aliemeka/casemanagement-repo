@@ -18,9 +18,5 @@ namespace ministryofjusticeWebUi.Models
         [MaxLength(20)]
         [Display(Name = "Last name")]
         public string LastName { get; set; }
-
-        [Required]
-        [Display(Name = "Role")]
-        public string RoleName{ get; set; }
     }
 }
