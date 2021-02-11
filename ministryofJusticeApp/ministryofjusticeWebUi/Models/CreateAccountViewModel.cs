@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
-using ministryofjusticeDomain.Entities;
 
 namespace ministryofjusticeWebUi.Models
 {
