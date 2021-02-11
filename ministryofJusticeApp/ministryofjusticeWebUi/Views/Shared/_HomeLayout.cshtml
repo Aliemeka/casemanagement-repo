@@ -11,122 +11,121 @@
     <title>@ViewBag.Title - Minisry of Justice</title>
     <!-- Custom styles for this template-->
     @Styles.Render("~/Static/css")
+    @Styles.Render("~/Assets/fontawesome")
 </head>
 <body>
-    <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-            <div class="site-mobile-menu-close">
-                <span class="icofont-close js-menu-toggle"></span>
+    <div class="site-wrap" id="home-section">
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
             </div>
+            <div class="site-mobile-menu-body"></div>
         </div>
-        <div class="site-mobile-menu-body"></div>
-    </div>
-    <nav class="site-nav dark mb-5">
-        <div class="container">
-            <div class="site-navigation">
-                <a href="index.html" class="logo m-0">Ministry of Justice<span class="text-primary">.</span></a>
-                <ul class="js-clone-nav d-none d-lg-inline-block site-menu float-right">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="services.html">FAQs</a></li>
-                    <li><a href="services.html">FAQs</a></li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li><a href="attorneys.html">Login</a></li>
-                </ul>
-                <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
-                    <span></span>
-                </a>
-            </div>
-        </div>
-        <div id="track-modal" tabindex="-1" role="dialog" aria-labelledby="track" aria-hidden="true" class="modal fade">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Track Complaint</h5>
-                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+        <header class="site-navbar site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center position-relative">
+                    <div class="col">
+                        <div class="site-logo">
+                            <strong>@Html.ActionLink("Home", "Index", "Home")</strong>
+                        </div>
                     </div>
-                    <div class="modal-body">
-
-                        <form action="#" method="post">
-                            <div class="form-group">
-                                <input id="case-modal" type="text" placeholder="Complain id" class="form-control">
-                            </div>
-                            <p class="text-center">
-                                <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
-                            </p>
-                        </form>
-                        <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><strong>@Html.ActionLink("Register now", "Register", "Account")</strong>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
+                    <div class="col-9 text-right text-lg-left">
+                        <span class="d-inline-block d-lg-none">
+                            <a href="#" class=" site-menu-toggle js-menu-toggle py-5 "><span class="icon-menu h3 text-black"></span></a>
+                        </span>
+                        <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav ml-auto ">
+                                <li class="active">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
+                                <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
+                                <li>@Html.ActionLink("Contact", "Contact", "Home",null, new { @class = "nav-link" })</li>
+                                <li>@Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link" })</li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
+        </header>
+        <div>
+            @RenderBody()
         </div>
-    </nav>
-    <div>
-        @RenderBody()
-    </div>
-    <div class="site-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="widget">
-                        <h3>Home</h3>
-                        <ul class="list-unstyled float-left links">
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Practice Area</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Attorneys</a></li>
-                            <li><a href="#">Terms</a></li>
-                            <li><a href="#">Privacy</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="widget">
-                        <h3>Practice Area</h3>
-                        <ul class="list-unstyled float-left links">
-                            <li><a href="#">Banking Law</a></li>
-                            <li><a href="#">Commercial Law</a></li>
-                            <li><a href="#">Corporate Law</a></li>
-                            <li><a href="#">Family Law</a></li>
-                            <li><a href="#">Media Law</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="widget">
-                        <h3>Services</h3>
-                        <ul class="list-unstyled float-left links">
-                            <li><a href="#">Labor Law</a></li>
-                            <li><a href="#">Employment</a></li>
-                            <li><a href="#">Property Law</a></li>
-                            <li><a href="#">Prosecution</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="widget">
-                        <h3>Contact</h3>
-                        <address>43 Raymouth Rd. Baltemoer, London 3910</address>
-                        <ul class="list-unstyled links mb-4">
-                            <li><a href="tel://11234567890">+1(123)-456-7890</a></li>
-                            <li><a href="tel://11234567890">+1(123)-456-7890</a></li>
-                            <li><a href="https://preview.colorlib.com/cdn-cgi/l/email-protection#cda4a3aba28da0b4a9a2a0aca4a3e3aea2a0"><span class="__cf_email__" data-cfemail="dbb2b5bdb49bb6a2bfb4b6bab2b5f5b8b4b6">[email&#160;protected]</span></a></li>
-                        </ul>
-                        <h3>Connect</h3>
+        <footer class="site-footer" style="background-image: url('../../Static/images/hero_bg_footer.jpg');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <h2 class="footer-heading mb-4">About Us</h2>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
                         <ul class="list-unstyled social">
-                            <li><a href="#"><span class="icon-instagram"></span></a></li>
-                            <li><a href="#"><span class="icon-twitter"></span></a></li>
-                            <li><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                            <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                            <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
+                            <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                            <li><a href="#"><span class="fab fa-linkedin"></span></a></li>
                         </ul>
+                    </div>
+                    <div class="col-lg-8 ml-auto">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <h2 class="footer-heading mb-4">Quick Links</h2>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Testimonials</a></li>
+                                    <li><a href="#">Terms of Service</a></li>
+                                    <li><a href="#">Privacy</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3">
+                                <h2 class="footer-heading mb-4">Resources</h2>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Testimonials</a></li>
+                                    <li><a href="#">Terms of Service</a></li>
+                                    <li><a href="#">Privacy</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3">
+                                <h2 class="footer-heading mb-4">Support</h2>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Testimonials</a></li>
+                                    <li><a href="#">Terms of Service</a></li>
+                                    <li><a href="#">Privacy</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3">
+                                <h2 class="footer-heading mb-4">Company</h2>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Testimonials</a></li>
+                                    <li><a href="#">Terms of Service</a></li>
+                                    <li><a href="#">Privacy</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-5 mt-5 text-center">
+                    <div class="col-md-12">
+                        <div class="border-top pt-5">
+                            <p>
+
+                                Copyright &copy;
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script> All rights reserved | Federal Ministry of Justice
+
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </footer>
     </div>
-    @Scripts.Render("~/Static/js")
-    @RenderSection("scripts", required: false)
+        @Scripts.Render("~/Static/js")
+        @RenderSection("scripts", required: false)
 </body>
 </html>

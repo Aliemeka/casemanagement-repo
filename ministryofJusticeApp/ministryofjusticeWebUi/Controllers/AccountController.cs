@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ministryofjusticeWebUi.Models;
+using ministryofjusticeDomain.Entities;
 
 namespace ministryofjusticeWebUi.Controllers
 {
@@ -70,6 +71,7 @@ namespace ministryofjusticeWebUi.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ModelState.AddModelError("", "Invalid login or password");
                 return View(model);
             }
 
