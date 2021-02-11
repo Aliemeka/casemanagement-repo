@@ -21,11 +21,13 @@
 <div class="container mt-4">
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
-        @Html.ActionLink("Manage Accounts", "ManageAccounts", "Admin", null, new{@class="nav-link ml-0"})
-        <a class="nav-link" href="#">Billing</a>
+        @Html.ActionLink("Manage Accounts", "ManageAccounts", "Admin", null, new { @class = "nav-link ml-0" })
+        @Html.ActionLink("Add Account", "CreateAccount", "Admin", null, new { @class = "nav-link" })
         <a class="nav-link" href="#">Security</a>
         <a class="nav-link" href="#">Notifications</a>
     </nav>
     <hr class="mt-0 mb-4" />
     @RenderBody()
 </div>
+
+@RenderSection("scripts", required: false)
