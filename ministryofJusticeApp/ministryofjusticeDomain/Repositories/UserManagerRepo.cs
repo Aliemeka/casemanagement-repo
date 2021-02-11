@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -24,7 +26,7 @@ namespace ministryofjusticeDomain.Repositories
         /// <returns></returns>
         public IEnumerable<ApplicationUser> GetAllUsers()
         {
-            return _userManager.Users;
+            return _userManager.Users.Include(d => d.Department).ToList();
         }
 
         /// <summary>
