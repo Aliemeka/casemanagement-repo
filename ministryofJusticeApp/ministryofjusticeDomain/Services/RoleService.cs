@@ -33,7 +33,7 @@ namespace ministryofjusticeDomain.Services
         }
 
         /// <summary>
-        /// Method to delete roles
+        /// Method to delete role
         /// </summary>
         /// <param name="roleName"></param>
         /// <returns></returns>

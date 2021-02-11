@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -25,6 +27,16 @@ namespace ministryofjusticeDomain.Repositories
         public IEnumerable<ApplicationUser> GetAllUsers()
         {
             return _userManager.Users;
+        }
+
+
+        public IdentityResult CreateUser(ApplicationUser user)
+        {
+            var guid = Guid.NewGuid();
+            var password = Convert.ToBase64String(guid.ToByteArray());
+            password = password.Replace("=", "");
+            var result = _userManager.Create(user, password);
+            return result;
         }
 
         /// <summary>
