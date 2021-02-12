@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ministryofjusticeDomain.Entities;
 using ministryofjusticeDomain.Interfaces;
-
 namespace ministryofjusticeDomain.Repositories
 {
     public class UserManagerRepo : IUserManagerRepo
@@ -26,7 +26,7 @@ namespace ministryofjusticeDomain.Repositories
         /// <returns></returns>
         public IEnumerable<ApplicationUser> GetAllUsers()
         {
-            return _userManager.Users;
+            return _userManager.Users.Include(d => d.Department).ToList();
         }
 
 

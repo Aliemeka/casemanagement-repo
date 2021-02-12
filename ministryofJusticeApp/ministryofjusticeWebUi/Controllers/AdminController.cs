@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using ministryofjusticeDomain.Entities;
@@ -22,31 +23,44 @@ namespace ministryofjusticeWebUi.Controllers
         // GET: Admin
         public ActionResult ManageAccounts()
         {
-            var model = _unitOfWork.UserManagerRepo.GetAllUsers();
-            return View(model);
+            var vm = new DashboardViewModel()
+            {
+                Department = _unitOfWork.DepartmentRepo.GetDepartments(),
+                Users = _unitOfWork.UserManagerRepo.GetAllUsers(),
+                Roles = _unitOfWork.UserManagerRepo.GetRoles()
+            };
+            return View(vm);
         }
 
         [HttpGet]
         public ActionResult CreateAccount()
         {
-            return View();
+            var vm = new CreateAccountViewModel()
+            {
+                Department = _unitOfWork.DepartmentRepo.GetDepartments(),
+                Roles =  _unitOfWork.UserManagerRepo.GetRoles()
+            };
+
+           return View(vm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateAccount(CreateAccountViewModel model)
+        public async Task<ActionResult> CreateAccount(CreateAccountViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser()
                 {
                     FirstName = model.FirstName,
-                    LastName = model.LastName
+                    LastName = model.LastName,
+                    DepartmentId = model.DepartmentId
                 };
                 var result = _unitOfWork.UserManagerRepo.CreateUser(user);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("ManageAccounts");
+                    var roleResult = await _unitOfWork.UserManagerRepo.AssignRoleAsync(user.Id, model.RoleId);
+                    if (roleResult.Succeeded) return RedirectToAction("ManageAccounts");
                 }
             }
             ModelState.AddModelError("", "Error creating account");
