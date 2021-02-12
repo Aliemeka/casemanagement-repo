@@ -45,7 +45,7 @@
                     <tr>
                         <td>@user.FirstName @user.LastName</td>
                         <td>@user.Email</td>
-                        <td>@user.Department.DepartmentName</td>
+                        <td>@(user.Department.DepartmentName ?? "DepartmentRole")</td>
                         <td>Roles</td>
                         <td>61</td>
                         <td>$320,800</td>

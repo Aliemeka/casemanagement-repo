@@ -12,10 +12,5 @@ namespace ministryofjusticeDomain.Interfaces
     {
         IEnumerable<ApplicationUser> GetAllUsers();
         IdentityResult CreateUser(ApplicationUser user);
-        IEnumerable<IdentityRole> GetRoles();
-        Task<IdentityResult> CreateRoleAsync(string roleName);
-        Task<IdentityResult> DeleteRoleAsync(string roleId);
-        Task<IdentityResult> AssignRoleAsync(string userId, string roleId);
-        Task<IdentityResult> RemoveRoleAsync(string userId, string roleId);
     }
 }

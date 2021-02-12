@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using ministryofjusticeDomain.Entities;
 using ministryofjusticeDomain.Interfaces;
 using ministryofjusticeDomain.Repositories;
+using ministryofjusticeDomain.Services;
 
 namespace ministryofjusticeWebUi.Infrastructures
 {
@@ -33,6 +34,7 @@ namespace ministryofjusticeWebUi.Infrastructures
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
             kernel.Bind<IDepartmentRepo>().To<DepartmentRepo>();
             kernel.Bind<IUserManagerRepo>().To<UserManagerRepo>();
+            kernel.Bind<IRoleService>().To<RoleService>();
         }
     }
 

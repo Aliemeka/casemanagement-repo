@@ -8,5 +8,6 @@ namespace ministryofjusticeDomain.Interfaces
     {
         IDepartmentRepo DepartmentRepo { get; }
         IUserManagerRepo UserManagerRepo { get; }
+        IRoleService RoleService { get; }
     }
 }
