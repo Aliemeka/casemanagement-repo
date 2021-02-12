@@ -59,7 +59,7 @@ namespace ministryofjusticeDomain.Repositories
 
         public IEnumerable<Department> GetDepartments()
         {
-            return _context.Departments;
+            return _context.Departments.ToList(); ;
         }
     }
 }
