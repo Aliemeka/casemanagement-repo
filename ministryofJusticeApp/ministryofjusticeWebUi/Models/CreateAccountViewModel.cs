@@ -4,11 +4,23 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
+using ministryofjusticeDomain.Entities;
+using Newtonsoft.Json;
 
 namespace ministryofjusticeWebUi.Models
 {
     public class CreateAccountViewModel
     {
+        public IEnumerable<Department> Department { get; set; }
+        public IEnumerable<IdentityRole> Roles { get; set; }
+
+
+        [Display(Name = "Assign Department")]
+        public byte DepartmentId { get; set; }
+
+        [Display(Name = "Assign Role")]
+        public string RoleId { get; set; }
+
         [Required]
         [MaxLength(20)]
         [Display(Name = "First name")]
@@ -19,4 +31,5 @@ namespace ministryofjusticeWebUi.Models
         [Display(Name = "Last name")]
         public string LastName { get; set; }
     }
+    
 }
