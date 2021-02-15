@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using ministryofjusticeDomain.Entities;
 using System.Threading.Tasks;
+using System.Web;
+using Microsoft.AspNet.Identity.Owin;
+using static System.Web.HttpContext;
+using ministryofjusticeDomain.IdentityEntities;
 using ministryofjusticeDomain.Interfaces;
 
 namespace ministryofjusticeDomain.Services
@@ -12,13 +15,15 @@ namespace ministryofjusticeDomain.Services
     /// </summary>
     public class RoleService : IRoleService
     {
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public RoleService(ApplicationDbContext context)
+        private readonly RoleManager<IdentityRole> _roleManager;
+     
+
+        public RoleService()
         {
-            _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            _userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            _roleManager = Current.GetOwinContext().Get<RoleManager<IdentityRole>>();
+            _userManager = Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
         }
 
         /// <summary>

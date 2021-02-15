@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using ministryofjusticeDomain.Entities;
+using ministryofjusticeDomain.IdentityEntities;
 using ministryofjusticeDomain.Interfaces;
 using ministryofjusticeDomain.Repositories;
 using ministryofjusticeDomain.Services;
@@ -30,11 +31,11 @@ namespace ministryofjusticeWebUi.Infrastructures
 
         private void AddBindings()
         {
-            kernel.Bind(typeof(ApplicationDbContext)).ToSelf();
+            //kernel.Bind(typeof(ApplicationDbContext)).ToSelf();
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
-            kernel.Bind<IDepartmentRepo>().To<DepartmentRepo>();
-            kernel.Bind<IUserManagerRepo>().To<UserManagerRepo>();
-            kernel.Bind<IRoleService>().To<RoleService>();
+            //kernel.Bind<IDepartmentRepo>().To<DepartmentRepo>();
+            //kernel.Bind<IUserManagerRepo>().To<UserManagerRepo>();
+            //kernel.Bind<IRoleService>().To<RoleService>();
         }
     }
 

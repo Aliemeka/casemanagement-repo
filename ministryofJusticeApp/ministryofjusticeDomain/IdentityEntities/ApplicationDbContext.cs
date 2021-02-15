@@ -1,7 +1,8 @@
 ﻿using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using ministryofjusticeDomain.Entities;
 
-namespace ministryofjusticeDomain.Entities
+namespace ministryofjusticeDomain.IdentityEntities
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
