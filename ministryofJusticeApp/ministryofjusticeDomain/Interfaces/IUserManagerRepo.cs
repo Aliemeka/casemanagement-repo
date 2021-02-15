@@ -11,6 +11,8 @@ namespace ministryofjusticeDomain.Interfaces
 {
     public interface IUserManagerRepo
     {
+        Task<ApplicationUser> GetUser(string email);
+        Task<IdentityResult> ChangePassword(string email, string oldPassword, string newPassword);
         IEnumerable<ApplicationUser> GetAllUsers();
         IdentityResult CreateUser(ApplicationUser user);
     }

@@ -14,6 +14,13 @@ namespace ministryofjusticeDomain.IdentityEntities
         public Department Department { get; set; }
         public byte? DepartmentId { get; set; }
 
+        public string FullName
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

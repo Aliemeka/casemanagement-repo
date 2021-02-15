@@ -24,11 +24,13 @@ namespace ministryofjusticeWebUi.Models
         [Required]
         [MaxLength(20)]
         [Display(Name = "First name")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use letters only please")]
         public string FirstName { get; set; }
 
         [Required]
         [MaxLength(20)]
         [Display(Name = "Last name")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use letters only please")]
         public string LastName { get; set; }
     }
     
