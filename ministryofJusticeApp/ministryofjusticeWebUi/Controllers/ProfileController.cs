@@ -12,39 +12,16 @@ namespace ministryofjusticeWebUi.Controllers
 {
     public class ProfileController : Controller
     {
-        private ApplicationUserManager _userManager;
+        private readonly IUnitOfWork _unitOfWork;
 
         public ProfileController()
         {
+            
         }
 
-        public ProfileController(ApplicationUserManager userManager, ApplicationRoleManager roleManager, IUnitOfWork unitOfWork)
+        public ProfileController(IUnitOfWork unitOfWork)
         {
-            UserManager = userManager;
-            RoleManager = roleManager;
             _unitOfWork = unitOfWork;
-        }
-
-        private readonly IUnitOfWork _unitOfWork;
-        private ApplicationRoleManager _roleManager;
-
-        public ApplicationUserManager UserManager
-        {
-            get { return _userManager; }
-            private set
-            {
-                _userManager = value;
-            }
-        }
-
-
-        public ApplicationRoleManager RoleManager
-        {
-            get { return _roleManager; }
-            private set
-            {
-                _roleManager = value;
-            }
         }
 
         // GET: Profile
@@ -63,14 +40,12 @@ namespace ministryofjusticeWebUi.Controllers
             {
                 return View(model);
             }
-            var user = await UserManager.FindByNameAsync(model.Email);
-            if (user != null)
-            {
-                user.EmailConfirmed = true;
-                var result = UserManager.ChangePasswordAsync(user.Id, model.OldPassword, model.Password);
-                
-                if(result.Result.Succeeded) RedirectToAction("Index", "Dashboard");
-            }
+
+            var result =
+                await _unitOfWork.UserManagerRepo.ChangePassword(model.Email, model.OldPassword, model.Password);
+
+            if (result.Succeeded) return RedirectToAction("Index", "Dashboard");
+
             return View();
         }
     }

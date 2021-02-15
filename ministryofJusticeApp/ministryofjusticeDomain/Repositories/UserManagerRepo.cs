@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using static System.Web.HttpContext;
@@ -43,6 +44,22 @@ namespace ministryofjusticeDomain.Repositories
             //create user
             var result = _userManager.Create(user, password);
             return result;
+        }
+
+        public async Task<ApplicationUser> GetUser(string email)
+        {
+            return await _userManager.FindByEmailAsync(email);
+        }
+
+        public async Task<IdentityResult> ChangePassword(string email, string oldPassword, string newPassword)
+        {
+            ApplicationUser user = await _userManager.FindByEmailAsync(email);
+            if (user != null)
+            {
+                var result = await _userManager.ChangePasswordAsync(user.Id, oldPassword, newPassword);
+                return result;
+            }
+            return IdentityResult.Failed();
         }
     }
 }

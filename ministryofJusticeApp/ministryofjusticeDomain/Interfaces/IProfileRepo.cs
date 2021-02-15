@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using ministryofjusticeDomain.Entities;
+using ministryofjusticeDomain.IdentityEntities;
 
 namespace ministryofjusticeDomain.Interfaces
 {
