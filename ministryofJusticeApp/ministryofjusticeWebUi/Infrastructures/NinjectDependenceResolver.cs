@@ -33,10 +33,10 @@ namespace ministryofjusticeWebUi.Infrastructures
         {
             kernel.Bind(typeof(ApplicationDbContext)).ToSelf();
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
-            // kernel.Bind<IDepartmentRepo>().To<DepartmentRepo>();
-            // kernel.Bind<IUserManagerRepo>().To<UserManagerRepo>();
-            // kernel.Bind<IProfileRepo>().To<ProfileRepo>();
-            // kernel.Bind<IRoleService>().To<RoleService>();
+            kernel.Bind<IDepartmentRepo>().To<DepartmentRepo>();
+            kernel.Bind<IUserManagerRepo>().To<UserManagerRepo>();
+            kernel.Bind<IProfileRepo>().To<ProfileRepo>();
+            kernel.Bind<IRoleService>().To<RoleService>();
         }
     }
 
