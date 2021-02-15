@@ -14,18 +14,20 @@ namespace ministryofjusticeDomain.Repositories
 
         public IDepartmentRepo DepartmentRepo { get; }
         public IUserManagerRepo UserManagerRepo { get; }
-
         public IRoleService RoleService { get; }
+        public IProfileRepo ProfileRepo { get; set; }
 
         public UnitOfWork(ApplicationDbContext context,
             IDepartmentRepo departmentRepo,
             IUserManagerRepo userManagerRepo,
-            IRoleService roleService)
+            IRoleService roleService,
+            IProfileRepo profileRepo)
         {
             _context = context;
             DepartmentRepo = departmentRepo;
             UserManagerRepo = userManagerRepo;
             RoleService = roleService;
+            ProfileRepo = profileRepo;
         }
     }
 }

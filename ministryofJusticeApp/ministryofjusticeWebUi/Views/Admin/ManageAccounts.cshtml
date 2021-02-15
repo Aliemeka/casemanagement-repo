@@ -43,9 +43,9 @@
                 @foreach (var user in Model.Users)
                 {
                     <tr>
-                        <td>@user.FirstName @user.LastName</td>
+                        <td>@user.FullName</td>
                         <td>@user.Email</td>
-                        <td>@(user.Department.DepartmentName ?? "DepartmentRole")</td>
+                        <td>@(user.Department?.DepartmentName ?? "Not assigned")</td>
                         <td>Roles</td>
                         <td>61</td>
                         <td>$320,800</td>

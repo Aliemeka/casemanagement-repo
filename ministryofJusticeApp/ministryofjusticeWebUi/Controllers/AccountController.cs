@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ministryofjusticeWebUi.Models;
 using ministryofjusticeDomain.Entities;
+using ministryofjusticeDomain.Interfaces;
 
 namespace ministryofjusticeWebUi.Controllers
 {
@@ -23,10 +24,11 @@ namespace ministryofjusticeWebUi.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IUnitOfWork unitOfWork)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _unitOfWork = unitOfWork;
         }
 
         public ApplicationSignInManager SignInManager
@@ -40,6 +42,8 @@ namespace ministryofjusticeWebUi.Controllers
                 _signInManager = value; 
             }
         }
+
+        private readonly IUnitOfWork _unitOfWork;
 
         public ApplicationUserManager UserManager
         {
