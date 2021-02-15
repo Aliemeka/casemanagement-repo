@@ -18,6 +18,10 @@ namespace ministryofjusticeWebUi.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
 
+        public AdminController()
+        {
+        }
+
         public AdminController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;

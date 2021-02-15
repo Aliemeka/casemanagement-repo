@@ -17,12 +17,12 @@ namespace ministryofjusticeDomain.Services
     {
         private readonly UserManager<ApplicationUser> _userManager;
 
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly ApplicationRoleManager _roleManager;
      
 
         public RoleService()
         {
-            _roleManager = Current.GetOwinContext().Get<RoleManager<IdentityRole>>();
+            _roleManager = Current.GetOwinContext().Get<ApplicationRoleManager>();
             _userManager = Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
         }
 
