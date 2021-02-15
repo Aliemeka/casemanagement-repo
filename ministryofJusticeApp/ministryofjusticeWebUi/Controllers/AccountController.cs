@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using ministryofjusticeWebUi.Models;
 using ministryofjusticeDomain.Entities;
 using ministryofjusticeDomain.Interfaces;
+using ministryofjusticeDomain.IdentityEntities;
 
 namespace ministryofjusticeWebUi.Controllers
 {

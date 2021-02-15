@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using ministryofjusticeDomain.Entities;
+using ministryofjusticeDomain.IdentityEntities;
 using ministryofjusticeDomain.Interfaces;
 using ministryofjusticeWebUi.Models;
 
@@ -42,6 +44,29 @@ namespace ministryofjusticeWebUi.Controllers
             };
 
            return View(vm);
+        }
+
+        [HttpGet]
+        public ActionResult AddDepartment()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddDepartment(DepartmentViewModel model)
+        {
+            try
+            {
+               var department = Mapper.Map<DepartmentViewModel, Department>(model);
+               _unitOfWork.DepartmentRepo.AddDepartment(department); 
+               return View("AddDepartment");
+
+            }
+            catch (Exception e)
+            {
+                return View("AddDepartment");
+            }
+           
         }
 
         [HttpPost]
