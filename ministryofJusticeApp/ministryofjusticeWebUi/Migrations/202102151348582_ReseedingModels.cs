@@ -3,10 +3,19 @@ namespace ministryofjusticeWebUi.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class RoleSeeding : DbMigration
+    public partial class ReseedingModels : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Departments",
+                c => new
+                    {
+                        Id = c.Byte(nullable: false, identity: true),
+                        DepartmentName = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -35,6 +44,9 @@ namespace ministryofjusticeWebUi.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        DepartmentId = c.Byte(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -48,6 +60,8 @@ namespace ministryofjusticeWebUi.Migrations
                         UserName = c.String(nullable: false, maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Departments", t => t.DepartmentId)
+                .Index(t => t.DepartmentId)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
             
             CreateTable(
@@ -81,11 +95,13 @@ namespace ministryofjusticeWebUi.Migrations
         {
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUsers", "DepartmentId", "dbo.Departments");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.AspNetUsers", new[] { "DepartmentId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
@@ -94,6 +110,7 @@ namespace ministryofjusticeWebUi.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Departments");
         }
     }
 }

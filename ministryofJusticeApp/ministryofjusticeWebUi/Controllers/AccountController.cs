@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ministryofjusticeWebUi.Models;
 using ministryofjusticeDomain.Entities;
+using ministryofjusticeDomain.IdentityEntities;
 
 namespace ministryofjusticeWebUi.Controllers
 {

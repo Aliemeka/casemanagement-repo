@@ -1,3 +1,5 @@
+using ministryofjusticeDomain.IdentityEntities;
+
 namespace ministryofjusticeWebUi.Migrations
 {
     using Microsoft.AspNet.Identity;
@@ -39,7 +41,7 @@ namespace ministryofjusticeWebUi.Migrations
             );
 
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            var role = new RoleService(context);
+            var role = new RoleService();
 
             role.CreateRoles("System Administrator");
             role.CreateRoles("Attorney General");
@@ -54,8 +56,7 @@ namespace ministryofjusticeWebUi.Migrations
             };
 
             //Creates a User and assign it to the role of  System Admin
-            var result = manager.Create(systemAdmin, " " +
-                                                     "");
+            var result = manager.Create(systemAdmin, "ZAcwx5@" );
             if (result.Succeeded) manager.AddToRole(systemAdmin.Id, "System Administrator");
 
             var attorney = new ApplicationUser()

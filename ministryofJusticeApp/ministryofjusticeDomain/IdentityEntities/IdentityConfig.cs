@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -12,7 +8,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using ministryofjusticeDomain.Entities;
 
-namespace ministryofjusticeWebUi
+namespace ministryofjusticeDomain.IdentityEntities
 {
     public class EmailService : IIdentityMessageService
     {
@@ -42,7 +38,7 @@ namespace ministryofjusticeWebUi
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
+            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(OwinContextExtensions.Get<ApplicationDbContext>(context)));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
@@ -103,7 +99,21 @@ namespace ministryofjusticeWebUi
 
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
-            return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+            return new ApplicationSignInManager(OwinContextExtensions.GetUserManager<ApplicationUserManager>(context), context.Authentication);
         }
+    }
+
+    public class ApplicationRoleManager : RoleManager<IdentityRole, string>
+    {
+        public ApplicationRoleManager(IRoleStore<IdentityRole, string> store) :base(store)
+        {
+            
+        }
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+        {
+            return new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<ApplicationDbContext>()));
+           
+        }
+
     }
 }

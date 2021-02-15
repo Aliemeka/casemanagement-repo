@@ -1,25 +1,25 @@
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNet.Identity;
+using static System.Web.HttpContext;
 using Microsoft.AspNet.Identity.EntityFramework;
-using ministryofjusticeDomain.Entities;
+using Microsoft.AspNet.Identity.Owin;
+using ministryofjusticeDomain.IdentityEntities;
 using ministryofjusticeDomain.Interfaces;
 namespace ministryofjusticeDomain.Repositories
 {
     public class UserManagerRepo : IUserManagerRepo
     {
-        private readonly RoleManager<IdentityRole> _roleManager;
+       
         private readonly UserManager<ApplicationUser> _userManager;
 
         public UserManagerRepo(ApplicationDbContext context)
         {
-            _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            _userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            _userManager = Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
         }
-
+      
         /// <summary>
         /// Returns the list of all the users
         /// </summary>
