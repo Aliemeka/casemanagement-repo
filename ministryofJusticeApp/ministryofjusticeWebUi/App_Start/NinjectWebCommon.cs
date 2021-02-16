@@ -1,5 +1,5 @@
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(ministryofjusticeWebUi.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(ministryofjusticeWebUi.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(ministryofjusticeWebUi.App_Start.NinjectWebCommon), "Stop")]
 
 namespace ministryofjusticeWebUi.App_Start
 {

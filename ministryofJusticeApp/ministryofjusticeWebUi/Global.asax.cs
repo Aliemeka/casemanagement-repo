@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using AutoMapper;
-using ministryofjusticeWebUi.App_Start;
+using ministryofjusticeWebUi.Infrastructures;
 
 namespace ministryofjusticeWebUi
 {

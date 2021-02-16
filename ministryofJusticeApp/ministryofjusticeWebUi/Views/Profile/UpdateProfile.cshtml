@@ -1,6 +1,7 @@
-﻿
+﻿@using ministryofjusticeWebUi.Models
+@model ProfileViewModel
 @{
-    ViewBag.Title = "UpdateProfile";
+    ViewBag.Title = "Update your profile";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
@@ -19,63 +20,82 @@
     </div>
 </header>
 
-<div class="col-xl-8">
+<div class="col-xl-8 mx-auto">
     <!-- Account details card-->
     <div class="card mb-4">
         <div class="card-header">Profile Details</div>
         <div class="card-body">
-            <form>
+            @using (Html.BeginForm("UpdateProfile", "Profile", null, FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger small" })
                 <!-- Form Row-->
                 <div class="form-row">
                     <!-- Form Group (first name)-->
                     <div class="form-group col-md-6">
-                        <label class="small mb-1" for="inputFirstName">First name</label>
-                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie" />
+                        @Html.LabelFor(m => m.FirstName, new{ @class="small mb-1" })
+                        @Html.TextBoxFor(m => m.FirstName, new
+                        {
+                            @class="form-control", id="inputFirstName", 
+                            placeholder="Enter your first name"
+                        })
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new{@class="small text-danger"})
                     </div>
                     <!-- Form Group (last name)-->
                     <div class="form-group col-md-6">
-                        <label class="small mb-1" for="inputLastName">Last name</label>
-                        <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna" />
-                    </div>
-                </div>
-                <!-- Form Row        -->
-                <div class="form-row">
-                    <!-- Form Group (organization name)-->
-                    <div class="form-group col-md-6">
-                        <label class="small mb-1" for="inputOrgName">Password</label>
-                        <input class="form-control" id="inputOrgName" type="password" placeholder="Enter your organization name" />
-                    </div>
-                    <!-- Form Group (location)-->
-                    <div class="form-group col-md-6">
-                        <label class="small mb-1" for="inputLocation">Confirm password</label>
-                        <input class="form-control" id="inputLocation" type="password" placeholder="Enter your location" />
+                        @Html.LabelFor(m=> m.LastName, new{ @class="small mb-1"})
+                        @Html.TextBoxFor(m => m.LastName, new
+                        {
+                            @class="form-control", 
+                            placeholder="Enter your last name"
+                        })
+                        @Html.ValidationMessageFor(m => m.LastName, "", new {@class="small text-danger"})
                     </div>
                 </div>
                 <!-- Form Group (email address)-->
                 <div class="form-group">
-                    <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                    <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com" />
+                    @Html.LabelFor(m=>m.Email, new{ @class="small mb-1"})
+                    @Html.TextBoxFor(m => m.Email, new
+                    {
+                        @class="form-control", 
+                        placeholder="Enter company email",
+                        @readonly = true
+                    })
+                    @Html.ValidationMessageFor(m => m.Email, "", new {@class="small text-danger"})
                 </div>
-                @if (User.IsInRole("Lawyer"))
+                <!-- Form Group (current[old] password)-->
+                <div class="form-group">
+                    @Html.LabelFor(m=>m.OldPassword, new{ @class="small mb-1"})
+                    @Html.PasswordFor(m => m.OldPassword, new {@class = "form-control", placeholder = "Enter your current password"})
+                    @Html.ValidationMessageFor(m => m.OldPassword, "", new {@class = "small text-danger"})
+                </div>
+                <!-- Form Group (organization name)-->
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new{ @class="small mb-1" })
+                    @Html.PasswordFor(m => m.Password, new {@class = "form-control", placeholder = "Enter new password"})
+                    @Html.ValidationMessageFor(m => m.Password, "", new {@class = "small text-danger"})
+                </div>
+                <!-- Form Group (location)-->
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "small mb-1" })
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm your password" })
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "small text-danger" })
+                </div>
+                if (User.IsInRole("Lawyer"))
                 {
-
                     <!-- Form Row-->
                     <div class="form-row">
                         <!-- Form Group (phone number)-->
                         <div class="form-group col-md-6">
-                            <label class="small mb-1" for="inputPhone">License</label>
-                            <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567" />
-                        </div>
-                        <!-- Form Group (birthday)-->
-                        <div class="form-group col-md-6">
-                            <label class="small mb-1" for="inputBirthday">Birthday</label>
-                            <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988" />
+                            @Html.LabelFor(m => m.License, new { @class = "small mb-1" })
+                            @Html.PasswordFor(m => m.License, new { @class = "form-control", placeholder = "Enter your legal practice license" })
+                            @Html.ValidationMessageFor(m => m.License, "", new { @class = "small text-danger" })
                         </div>
                     </div>
                 }
                 <!-- Save changes button-->
-                <button class="btn btn-primary" type="button">Update profile</button>
-            </form>
+                <button class="btn btn-primary" type="submit">Update profile</button>
+            }
         </div>
     </div>
 </div>

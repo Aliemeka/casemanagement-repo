@@ -11,12 +11,11 @@ using ministryofjusticeDomain.Interfaces;
 namespace ministryofjusticeDomain.Services
 {
     /// <summary>
-    /// Service reponsible for adding roles, deleting roles and assigning roles
+    /// Service responsible for adding roles, deleting roles and assigning roles
     /// </summary>
     public class RoleService : IRoleService
     {
         private readonly UserManager<ApplicationUser> _userManager;
-
         private readonly ApplicationRoleManager _roleManager;
      
 
