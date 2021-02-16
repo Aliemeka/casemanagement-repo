@@ -43,13 +43,13 @@
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(m => m.DepartmentId),
+                @Html.LabelFor(m => m.DepartmentId)
                 @Html.DropDownListFor(m => m.DepartmentId, new SelectList(Model.Department, "Id", "DepartmentName"), "Select Types", new { @class = "form-control " })
                 @Html.ValidationMessageFor(m => m.DepartmentId)
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.RoleId),
+                @Html.LabelFor(m => m.RoleId)
                 @Html.DropDownListFor(m => m.RoleId, new SelectList(Model.Roles, "Id", "Name"), "Select Types", new { @class = "form-control " })
                 @Html.ValidationMessageFor(m => m.RoleId)
             </div>

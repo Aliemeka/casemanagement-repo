@@ -8,6 +8,6 @@ namespace ministryofjusticeDomain.Interfaces
 {
     public interface IProfileRepo
     {
-        void UpdateProfile(ApplicationUser user, Lawyer lawyer, AttorneyGeneral ag, DepartmentHead hod);
+        void UpdateProfile(ApplicationUser user, Lawyer lawyer = null, AttorneyGeneral ag = null, DepartmentHead hod = null);
     }
 }
