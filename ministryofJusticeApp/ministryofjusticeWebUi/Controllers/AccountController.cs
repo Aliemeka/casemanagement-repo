@@ -89,7 +89,10 @@ namespace ministryofjusticeWebUi.Controllers
                 case SignInStatus.Success:
                     if (returnUrl == null)
                     {
-                        return RedirectToAction("Index", "Dashboard");
+                        var user = await UserManager.FindByEmailAsync(model.Email);
+                        return user.EmailConfirmed
+                            ? RedirectToAction("Index", "Dashboard")
+                            : RedirectToAction("UpdateProfile", "Profile");
                     }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
