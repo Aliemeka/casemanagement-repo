@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using ministryofjusticeDomain.Entities;
 using ministryofjusticeDomain.IdentityEntities;
 using ministryofjusticeDomain.Interfaces;
 using ministryofjusticeDomain.Repositories;

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using ministryofjusticeDomain.IdentityEntities;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ministryofjusticeWebUi.Models
 {
@@ -22,16 +17,16 @@ namespace ministryofjusticeWebUi.Models
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "You have to enter your current password")]
-        [MinLength(6)]
         [Display(Name = "Current Password")]
         public string OldPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "You have to enter a new password")]
         [Display(Name = "New password")]
+        [DataType(DataType.Password, ErrorMessage = "Password must have at least one character, one number and one special character")]
         [MinLength(6, ErrorMessage = "Password must be at least 6 characters long")]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "You have to confirm your password")]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }

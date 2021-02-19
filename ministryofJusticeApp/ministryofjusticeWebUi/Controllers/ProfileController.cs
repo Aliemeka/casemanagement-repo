@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using ministryofjusticeDomain.Entities;
 using ministryofjusticeDomain.IdentityEntities;
 using ministryofjusticeDomain.Interfaces;
 using ministryofjusticeWebUi.Models;
@@ -51,11 +53,28 @@ namespace ministryofjusticeWebUi.Controllers
             if (result.Succeeded)
             {
                 var user = Mapper.Map<ProfileViewModel, ApplicationUser>(model);
-                _unitOfWork.ProfileRepo.UpdateProfile(user);
+                if (User.IsInRole("Lawyer"))
+                {
+                    var lawyer = Mapper.Map<ProfileViewModel, Lawyer>(model);
+                    _unitOfWork.ProfileRepo.UpdateProfile(user, lawyer);
+                } 
+                else if (User.IsInRole("Attorney General"))
+                {
+                    var ag = new AttorneyGeneral();
+                    _unitOfWork.ProfileRepo.UpdateProfile(user, null, ag);
+                }
+                else if (User.IsInRole("Director of Department"))
+                {
+                    var hod = new DepartmentHead();
+                    _unitOfWork.ProfileRepo.UpdateProfile(user, null, null, hod);
+                }
+                else 
+                    _unitOfWork.ProfileRepo.UpdateProfile(user);
                 return RedirectToAction("Index", "Dashboard");
             };
 
-            return View();
+            result.Errors.ForEach(error => ModelState.AddModelError("", error));
+            return View(model);
         }
     }
 }

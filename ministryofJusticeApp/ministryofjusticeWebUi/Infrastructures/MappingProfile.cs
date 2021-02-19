@@ -15,6 +15,7 @@ namespace ministryofjusticeWebUi.Infrastructures
         {
             Mapper.CreateMap<Department, DepartmentViewModel>().ReverseMap().ForMember(dest => dest.Users, opt => opt.Ignore());
             Mapper.CreateMap<ProfileViewModel, ApplicationUser>().ReverseMap();
+            Mapper.CreateMap<ProfileViewModel, Lawyer>();
         }
     }
 }
