@@ -179,6 +179,8 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Infrastructures\MappingProfile.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
@@ -2251,13 +2253,18 @@
     <Content Include="Static\fonts\icomoon\fonts\icomoon1a44.ttf" />
     <Content Include="Static\fonts\icomoon\fonts\icomoon1a44.woff" />
     <Content Include="Views\Admin\ManageAccounts.cshtml" />
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\Shared\_LogoutModal.cshtml" />
     <Content Include="Views\Admin\CreateAccount.cshtml" />
     <Content Include="Views\Profile\UpdateProfile.cshtml" />
-    <Content Include="Views\Admin\AddDepartment.cshtml" />
+    <Content Include="Views\Department\CreateDepartment.cshtml" />
+    <Content Include="Views\Role\_RoleLayout.cshtml" />
+    <Content Include="Views\Role\ManageRoles.cshtml" />
+    <Content Include="Views\Role\CreateRole.cshtml" />
+    <Content Include="Views\Department\_DepartmentLayout.cshtml" />
+    <Content Include="Views\Department\ManageDepartments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2283,6 +2290,7 @@
       <DependentUpon>202102181612455_DatabaseSeed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
