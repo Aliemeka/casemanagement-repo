@@ -43,6 +43,7 @@ namespace ministryofjusticeWebUi.Migrations
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
+            // Seeded roles list
             IList<IdentityRole> roles = new List<IdentityRole>()
             {
                 new IdentityRole(){ Name = "System Administrator"},
@@ -51,6 +52,7 @@ namespace ministryofjusticeWebUi.Migrations
                 new IdentityRole(){ Name = "Lawyer"}
             };
 
+            // Creates new roles in database
             foreach (var role in roles)
             {
                 if (!roleManager.RoleExists(role.Name))
