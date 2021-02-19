@@ -59,18 +59,9 @@ namespace ministryofjusticeWebUi.Controllers
         [HttpPost]
         public ActionResult AddDepartment(DepartmentViewModel model)
         {
-            try
-            {
-               var department = Mapper.Map<DepartmentViewModel, Department>(model);
-               _unitOfWork.DepartmentRepo.AddDepartment(department); 
-               return View("AddDepartment");
-
-            }
-            catch (Exception e)
-            {
-                return View("AddDepartment");
-            }
-           
+           var department = Mapper.Map<DepartmentViewModel, Department>(model);
+           _unitOfWork.DepartmentRepo.AddDepartment(department); 
+           return View("AddDepartment");
         }
 
         [HttpPost]

@@ -7,13 +7,13 @@ namespace ministryofjusticeWebUi.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ReseedingModels : IMigrationMetadata
+    public sealed partial class DatabaseSeed : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ReseedingModels));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DatabaseSeed));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102151348582_ReseedingModels"; }
+            get { return "202102181612455_DatabaseSeed"; }
         }
         
         string IMigrationMetadata.Source
