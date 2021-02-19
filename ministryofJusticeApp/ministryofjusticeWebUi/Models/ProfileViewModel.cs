@@ -22,8 +22,10 @@ namespace ministryofjusticeWebUi.Models
 
         [Required(ErrorMessage = "You have to enter a new password")]
         [Display(Name = "New password")]
-        [DataType(DataType.Password, ErrorMessage = "Password must have at least one character, one number and one special character")]
+        [DataType(DataType.Password)]
         [MinLength(6, ErrorMessage = "Password must be at least 6 characters long")]
+        [RegularExpression(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-_+=()]).{6,}$", 
+            ErrorMessage = "Password must contain at least one uppercase character, one lower character, one number and one special character")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "You have to confirm your password")]

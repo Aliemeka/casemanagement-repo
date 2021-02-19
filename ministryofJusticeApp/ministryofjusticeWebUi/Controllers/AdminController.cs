@@ -50,20 +50,6 @@ namespace ministryofjusticeWebUi.Controllers
            return View(vm);
         }
 
-        [HttpGet]
-        public ActionResult AddDepartment()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult AddDepartment(DepartmentViewModel model)
-        {
-           var department = Mapper.Map<DepartmentViewModel, Department>(model);
-           _unitOfWork.DepartmentRepo.AddDepartment(department); 
-           return View("AddDepartment");
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateAccount(CreateAccountViewModel model)
