@@ -27,6 +27,8 @@ namespace ministryofjusticeDomain.IdentityEntities
             modelBuilder.Configurations.Add(new DepartmentConfiguration());
             modelBuilder.Configurations.Add(new LawyerConfiguration());
             modelBuilder.Configurations.Add(new AttorneyGeneralConfiguration());
+            base.OnModelCreating(modelBuilder);
         }
+
     }
 }
