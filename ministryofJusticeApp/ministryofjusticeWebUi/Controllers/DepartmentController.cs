@@ -41,7 +41,8 @@ namespace ministryofjusticeWebUi.Controllers
                 var department = Mapper.Map<DepartmentViewModel, Department>(model);
                 _unitOfWork.DepartmentRepo.Insert(department);
                 _unitOfWork.DepartmentRepo.Save();
-                return RedirectToAction("ManageDepartments");
+                TempData["Message"] = "Department Created Successfully";
+                return View("CreateDepartment");
             }
 
             return View();
@@ -64,6 +65,7 @@ namespace ministryofjusticeWebUi.Controllers
             var department = Mapper.Map(model, departmentInDb);
             _unitOfWork.DepartmentRepo.Update(department);
             _unitOfWork.DepartmentRepo.Save();
+            TempData["Message"] = "Department Updated Successfully";
             return View("UpdateDepartment");
         }
     }
