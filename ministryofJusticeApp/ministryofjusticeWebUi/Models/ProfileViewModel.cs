@@ -24,8 +24,9 @@ namespace ministryofjusticeWebUi.Models
         [Display(Name = "New password")]
         [DataType(DataType.Password)]
         [MinLength(6, ErrorMessage = "Password must be at least 6 characters long")]
-        [RegularExpression(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-_+=()]).{6,}$", 
-            ErrorMessage = "Password must contain at least one uppercase character, one lower character, one number and one special character")]
+        [RegularExpression(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-_+=()]).{6,}$",
+            ErrorMessage =
+                "Password must contain at least one uppercase character, one lower character, one number and one special character")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "You have to confirm your password")]
@@ -37,6 +38,7 @@ namespace ministryofjusticeWebUi.Models
         [Required]
         [Editable(false)]
         public string Email { get; set; }
+
         public string License { get; set; }
     }
 }

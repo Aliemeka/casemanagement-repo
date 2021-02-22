@@ -4,6 +4,35 @@
     Layout = "~/Views/Department/_DepartmentLayout.cshtml";
     ViewBag.Title = "Manage departments";
 }
+@if (!Model.Any())
+{
+    <p>There was no avaliable product</p>
+}
+else
+{
+    <p>  @Html.ActionLink("New Product", "New", "Product", null, new { @class = "btn btn-primary" })</p>
 
-<i>Departments Table here</i>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            
+
+        </tr>
+        </thead>
+        <tbody>
+        @{
+            foreach (var department in Model)
+            {
+                <tr>
+                    <td> @Html.ActionLink(@department.DepartmentName, "UpdateDepartment", "Department", new { id = department.Id }, null)</td>
+                   
+                </tr>
+            }
+        }
+        </tbody>
+
+    </table>
+}
 

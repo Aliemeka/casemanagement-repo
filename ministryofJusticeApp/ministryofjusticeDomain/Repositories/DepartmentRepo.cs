@@ -24,6 +24,10 @@ namespace ministryofjusticeDomain.Repositories
             _context.Departments.Add(department);
             _context.SaveChanges();
         }
+        public void UpdateDepartment(Department department)
+        {
+           _context.SaveChanges();
+        }
 
         /// <summary>
         /// Adds a user to the department
@@ -44,7 +48,7 @@ namespace ministryofjusticeDomain.Repositories
             }
         }
 
-        public Department DeleteDepartment(byte departmentId)
+        public Department DeleteDepartment(int departmentId)
         {
             var department = _context.Departments.Find(departmentId);
             if (department != null)
@@ -56,10 +60,12 @@ namespace ministryofjusticeDomain.Repositories
             return department;
         }
 
-        public Department GetDepartment(byte departmentId)
+        public Department GetDepartment(int departmentId)
         {
             return _context.Departments.Find(departmentId);
         }
+
+       
 
         public IEnumerable<Department> GetDepartments()
         {

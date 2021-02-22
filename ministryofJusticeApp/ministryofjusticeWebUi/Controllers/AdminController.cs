@@ -26,6 +26,7 @@ namespace ministryofjusticeWebUi.Controllers
         {
             _unitOfWork = unitOfWork;
         }
+
         // GET: Admin
         public ActionResult ManageAccounts()
         {
@@ -44,10 +45,10 @@ namespace ministryofjusticeWebUi.Controllers
             var vm = new CreateAccountViewModel()
             {
                 Department = _unitOfWork.DepartmentRepo.GetDepartments(),
-                Roles =  _unitOfWork.RoleService.GetRoles()
+                Roles = _unitOfWork.RoleService.GetRoles()
             };
 
-           return View(vm);
+            return View(vm);
         }
 
         [HttpPost]
@@ -69,6 +70,7 @@ namespace ministryofjusticeWebUi.Controllers
                     if (roleResult.Succeeded) return RedirectToAction("ManageAccounts");
                 }
             }
+
             ModelState.AddModelError("", "Error creating account");
             return View(model);
         }
