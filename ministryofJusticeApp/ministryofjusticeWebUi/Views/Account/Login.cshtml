@@ -5,18 +5,6 @@
     Layout = "/Views/Shared/_AuthLayout.cshtml";
 }
 
-
-
-<!--
-<div class="col-md-4">
-    <section id="socialLoginForm">
-        f@Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-    </section>
-</div>
--->
-
-
-
 <div class="col-xl-10 col-lg-12 col-md-9">
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
@@ -29,14 +17,14 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">@ViewBag.Title</h1>
                         </div>
-                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        @using (Html.BeginForm("Login", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
                         {
                             @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger small" })
+                            @Html.ValidationSummary(true, "", new {@class = "text-danger small"})
                             <!--Email-->
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Email,
-                                    new { @class = "col-md-6 control-label" })
+                                    new {@class = "col-md-6 control-label"})
                                 <div>
                                     @Html.TextBoxFor(m => m.Email,
                                         new
@@ -46,14 +34,14 @@
                                             @ariaDescribedby = "emailHelp",
                                             @placeholder = "Enter Email Address..."
                                         })
-                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger small" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger small"})
                                 </div>
                             </div>
 
                             <!--Password-->
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Password,
-                                    new { @class = "col-md-6 control-label" })
+                                    new {@class = "col-md-6 control-label"})
                                 <div>
                                     @Html.PasswordFor(m => m.Password,
                                         new
@@ -62,7 +50,7 @@
                                             @id = "exampleInputPassword",
                                             @placeholder = "Enter Password..."
                                         })
-                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger small" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger small"})
                                 </div>
                             </div>
 
@@ -74,7 +62,7 @@
                                             @class = "control-input",
                                             @id = "customCheck"
                                         })
-                                    @Html.LabelFor(m => m.RememberMe, new { @class = "control-label" })
+                                    @Html.LabelFor(m => m.RememberMe, new {@class = "control-label"})
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block">
@@ -84,7 +72,7 @@
                         <hr>
                         <div class="text-center">
                             @*<a class="small" href="forgot-password.html">Forgot Password?</a>*@
-                            @Html.ActionLink("Forgot Password?", "ForgotPassword", null, new { @class = "small" })
+                            @Html.ActionLink("Forgot Password?", "ForgotPassword", null, new {@class = "small"})
                         </div>
 
                         @*@<div class="text-center">

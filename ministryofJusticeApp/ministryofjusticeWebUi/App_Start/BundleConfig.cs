@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace ministryofjusticeWebUi
 {
@@ -14,27 +13,27 @@ namespace ministryofjusticeWebUi
             */
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+                "~/Scripts/jquery.validate*"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+                "~/Scripts/modernizr-*"));
 
             //bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-              //        "~/Scripts/bootstrap.js"));
+            //        "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Static/css").Include(
-                 "~/Static/css/fonts/icomoon/style.css",
+                "~/Static/css/fonts/icomoon/style.css",
                 "~/Static/css/bootstrap.min.css",
-                 "~/Static/css/bootstrap-datepicker.css",
-                 "~/Static/css/jquery.fancybox.min.css",
+                "~/Static/css/bootstrap-datepicker.css",
+                "~/Static/css/jquery.fancybox.min.css",
                 "~/Static/css/owl.carousel.min.css",
                 "~/Static/css/owl.theme.default.min.css",
                 "~/Static/fonts/flaticon/font/flaticon.css",
                 "~/Static/css/aos.css",
                 "~/Static/css/style.css"
-                ));
+            ));
 
             bundles.Add(new ScriptBundle("~/Static/js").Include(
                 "~/Static/js/jquery-3.3.1.min.js",
@@ -64,13 +63,13 @@ namespace ministryofjusticeWebUi
                 "~/Assets/css/sb-admin-2.min.css"));
 
             bundles.Add(new StyleBundle("~/Assets/main").Include(
-                    "~/Assets/css/styles.css"
-                ));
+                "~/Assets/css/styles.css"
+            ));
 
             bundles.Add(new StyleBundle("~/Assets/vendors").Include(
-                    "~/Assets/vendor/datatables/dataTables.bootstrap4.min.css",
-                    "~/Assets/vendor/daterangepicker/daterangepicker.css"
-                ));
+                "~/Assets/vendor/datatables/dataTables.bootstrap4.min.css",
+                "~/Assets/vendor/daterangepicker/daterangepicker.css"
+            ));
 
             bundles.Add(new ScriptBundle("~/Assets/scripts").Include(
                 "~/Assets/vendor/jquery/jquery.min.js",
@@ -78,7 +77,7 @@ namespace ministryofjusticeWebUi
                 "~/Assets/vendor/jquery-easing/jquery.easing.min.js",
                 "~/Assets/js/sb-admin-2.min.js",
                 "~/Assets/js/scripts.js"
-                ));
+            ));
             bundles.Add(new ScriptBundle("~/Assets/plugins").Include(
                 "~/Assets/vendor/email-decode/email-decode.min.js",
                 "~/Assets/vendor/chart.js/Chart.min.js",
@@ -88,11 +87,11 @@ namespace ministryofjusticeWebUi
                 "~/Assets/vendor/moment/moment.min.js",
                 "~/Assets/vendor/daterangepicker/daterangepicker.min.js",
                 "~/Assets/js/demo/date-range-picker-demo.js"
-                ));
+            ));
 
             bundles.Add(new ScriptBundle("~/Assets/customizer").Include(
-                    "~/Assets/js/sb-customizer.js"
-                ));
+                "~/Assets/js/sb-customizer.js"
+            ));
         }
     }
 }

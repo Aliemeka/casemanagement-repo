@@ -2,6 +2,7 @@
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(ministryofjusticeWebUi.Startup))]
+
 namespace ministryofjusticeWebUi
 {
     public partial class Startup

@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
     $('input[name="birthday"]').daterangepicker(
         {
             singleDatePicker: true,

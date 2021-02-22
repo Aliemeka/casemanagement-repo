@@ -3,7 +3,7 @@
     * Copyright 2013-2020 Start Bootstrap
     * Licensed under SEE_LICENSE (https://github.com/StartBootstrap/sb-admin-pro/blob/master/LICENSE)
     */
-    (function ($) {
+(function($) {
     "use strict";
 
     // Enable Bootstrap tooltips via data-attributes globally
@@ -18,17 +18,18 @@
 
     // Add active state to sidbar nav links
     var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
-    $("#layoutSidenav_nav .sidenav a.nav-link").each(function () {
+    $("#layoutSidenav_nav .sidenav a.nav-link").each(function() {
         if (this.href === path) {
             $(this).addClass("active");
         }
     });
 
     // Toggle the side navigation
-    $("#sidebarToggle").on("click", function (e) {
-        e.preventDefault();
-        $("body").toggleClass("sidenav-toggled");
-    });
+    $("#sidebarToggle").on("click",
+        function(e) {
+            e.preventDefault();
+            $("body").toggleClass("sidenav-toggled");
+        });
 
     // Activate Feather icons
     feather.replace();
@@ -40,11 +41,11 @@
     });
 
     // Scrolls to an offset anchor when a sticky nav link is clicked
-    $('.nav-sticky a.nav-link[href*="#"]:not([href="#"])').click(function () {
+    $('.nav-sticky a.nav-link[href*="#"]:not([href="#"])').click(function() {
         if (
             location.pathname.replace(/^\//, "") ==
-            this.pathname.replace(/^\//, "") &&
-            location.hostname == this.hostname
+                this.pathname.replace(/^\//, "") &&
+                location.hostname == this.hostname
         ) {
             var target = $(this.hash);
             target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
@@ -60,7 +61,7 @@
     });
 
     // Click to collapse responsive sidebar
-    $("#layoutSidenav_content").click(function () {
+    $("#layoutSidenav_content").click(function() {
         const BOOTSTRAP_LG_WIDTH = 992;
         if (window.innerWidth >= 992) {
             return;
@@ -84,7 +85,7 @@
 
     targetAnchor.addClass('active');
 
-    collapseAncestors.each(function () {
+    collapseAncestors.each(function() {
         $(this).addClass('show');
         $('[data-target="#' + this.id + '"]').removeClass('collapsed');
 
