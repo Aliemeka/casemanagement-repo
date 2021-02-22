@@ -12,7 +12,7 @@ namespace ministryofjusticeDomain.IdentityEntities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Department Department { get; set; }
-        public int DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
 
         public string FullName
         {

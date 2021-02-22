@@ -4,35 +4,46 @@
     Layout = "~/Views/Department/_DepartmentLayout.cshtml";
     ViewBag.Title = "Manage departments";
 }
-@if (!Model.Any())
-{
-    <p>There was no avaliable product</p>
-}
-else
-{
-    <p>  @Html.ActionLink("New Product", "New", "Product", null, new { @class = "btn btn-primary" })</p>
 
-
-    <table class="table table-bordered table-hover">
-        <thead>
-        <tr>
-            <th>Name</th>
-            
-
-        </tr>
-        </thead>
-        <tbody>
-        @{
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between">
+        All Departments
+        <a class="btn btn-sm btn-outline-primary" href="@Url.Action("CreateDepartment")"><i class="fa fa-plus mr-1"></i>Add Department</a>
+    </div>
+    <div class="card-body">
+        @if (!Model.Any())
+        {
+            <p>There was no departments</p>
+        }
+        else
+        {
             foreach (var department in Model)
             {
-                <tr>
-                    <td> @Html.ActionLink(@department.DepartmentName, "UpdateDepartment", "Department", new { id = department.Id }, null)</td>
-                   
-                </tr>
+                <!-- Item 1-->
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <div class="d-flex align-items-center flex-shrink-0 mr-3">
+                        <div class="avatar avatar-xl mr-3 bg-gray-200">
+                            <i data-feather="briefcase"></i>
+                        </div>
+                        <div class="d-flex flex-column font-weight-bold">
+                            <a class="text-dark line-height-normal mb-1" href="#!">@department.DepartmentName</a>
+                            <div class="small text-muted line-height-normal">@( department.Users != null ? $"{department.Users.Count()} members" : "No member") <i data-feather="users"></i></div>
+                        </div>
+                    </div>
+                    <div class="dropdown no-caret">
+                        <button class="btn btn-transparent-dark btn-icon dropdown-toggle" id="dropdownPeople1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i data-feather="more-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="dropdownPeople1">
+                            <a class="dropdown-item text-secondary" href="#"><i data-feather="user-plus" class="mr-2"></i>Add members</a>
+                            <a class="dropdown-item text-primary" href="#!"><i data-feather="edit-2" class="mr-2"></i>Edit department</a>
+                            <a class="dropdown-item text-danger" href="#!"><i data-feather="trash" class="mr-2"></i>Delete department</a>
+                        </div>
+                    </div>
+                </div>
             }
         }
-        </tbody>
+    </div>
+</div>
 
-    </table>
-}
 
