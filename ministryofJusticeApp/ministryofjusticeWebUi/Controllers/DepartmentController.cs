@@ -22,7 +22,7 @@ namespace ministryofjusticeWebUi.Controllers
         // GET: Department
         public ActionResult ManageDepartments()
         {
-            var vm = _unitOfWork.DepartmentRepo.GetDepartments();
+            var vm = _unitOfWork.DepartmentRepo.GetAll();
             return View(vm);
         }
 
@@ -39,7 +39,8 @@ namespace ministryofjusticeWebUi.Controllers
             if (ModelState.IsValid)
             {
                 var department = Mapper.Map<DepartmentViewModel, Department>(model);
-                _unitOfWork.DepartmentRepo.AddDepartment(department);
+                _unitOfWork.DepartmentRepo.Insert(department);
+                _unitOfWork.DepartmentRepo.Save();
                 return RedirectToAction("ManageDepartments");
             }
 
@@ -47,20 +48,22 @@ namespace ministryofjusticeWebUi.Controllers
         }
 
         [HttpGet]
-        public ActionResult UpdateDepartment()
+        public ActionResult UpdateDepartment(int id)
         {
-            return View();
+            Department department = _unitOfWork.DepartmentRepo.GetById(id);
+            return View(department);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult UpdateDepartment(DepartmentViewModel model)
         {
-            var departmentInDb = _unitOfWork.DepartmentRepo.GetDepartment(model.Id);
+            var departmentInDb = _unitOfWork.DepartmentRepo.GetById(model.Id);
             if (departmentInDb == null)
                 return HttpNotFound("There is no department found");
             var department = Mapper.Map(model, departmentInDb);
-            _unitOfWork.DepartmentRepo.UpdateDepartment(department);
+            _unitOfWork.DepartmentRepo.Update(department);
+            _unitOfWork.DepartmentRepo.Save();
             return View("UpdateDepartment");
         }
     }
