@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ministryofjusticeDomain.Entities;
+using ministryofjusticeDomain.IdentityEntities.EntityConfigurations;
 
 namespace ministryofjusticeDomain.IdentityEntities
 {
@@ -23,16 +24,9 @@ namespace ministryofjusticeDomain.IdentityEntities
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Department>()
-                .HasKey(d => d.Id)
-                .Property(d => d.Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-             
-
-            modelBuilder.Entity<Department>()
-                .Property(d => d.DepartmentName)
-                .HasMaxLength(255);
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Configurations.Add(new DepartmentConfiguration());
+            modelBuilder.Configurations.Add(new LawyerConfiguration());
+            modelBuilder.Configurations.Add(new AttorneyGeneralConfiguration());
         }
     }
 }
