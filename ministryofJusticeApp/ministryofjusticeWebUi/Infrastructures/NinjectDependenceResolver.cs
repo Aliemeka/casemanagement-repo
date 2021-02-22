@@ -12,6 +12,7 @@ namespace ministryofjusticeWebUi.Infrastructures
     public class NinjectDependenceResolver : IDependencyResolver
     {
         private IKernel kernel;
+
         public NinjectDependenceResolver(IKernel kernelParam)
         {
             kernel = kernelParam;
@@ -38,5 +39,4 @@ namespace ministryofjusticeWebUi.Infrastructures
             kernel.Bind<IRoleService>().To<RoleService>();
         }
     }
-
 }

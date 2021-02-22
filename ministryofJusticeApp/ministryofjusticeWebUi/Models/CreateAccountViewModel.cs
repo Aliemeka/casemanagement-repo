@@ -15,11 +15,9 @@ namespace ministryofjusticeWebUi.Models
         public IEnumerable<IdentityRole> Roles { get; set; }
 
 
-        [Display(Name = "Assign Department")]
-        public byte DepartmentId { get; set; }
+        [Display(Name = "Assign Department")] public byte DepartmentId { get; set; }
 
-        [Display(Name = "Assign Role")]
-        public string RoleId { get; set; }
+        [Display(Name = "Assign Role")] public string RoleId { get; set; }
 
         [Required]
         [MaxLength(20)]
@@ -33,5 +31,4 @@ namespace ministryofjusticeWebUi.Models
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use letters only please")]
         public string LastName { get; set; }
     }
-    
 }

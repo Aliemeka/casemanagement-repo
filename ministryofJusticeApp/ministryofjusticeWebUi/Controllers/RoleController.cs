@@ -6,6 +6,7 @@ namespace ministryofjusticeWebUi.Controllers
     public class RoleController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+
         public RoleController()
         {
         }
@@ -14,6 +15,7 @@ namespace ministryofjusticeWebUi.Controllers
         {
             _unitOfWork = unitOfWork;
         }
+
         // GET: Role
         public ActionResult ManageRoles()
         {

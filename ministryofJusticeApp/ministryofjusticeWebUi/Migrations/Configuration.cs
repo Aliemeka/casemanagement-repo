@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ministryofjusticeDomain.Entities;
@@ -31,12 +32,12 @@ namespace ministryofjusticeWebUi.Migrations
                 new Department()
                 {
                     Id = 1,
-                    DepartmentName = "Administration"
+                    DepartmentName = "Criminal"
                 },
                 new Department()
                 {
                     Id = 2,
-                    DepartmentName = "Attorney General"
+                    DepartmentName = "Civil"
                 }
             );
 
@@ -46,10 +47,10 @@ namespace ministryofjusticeWebUi.Migrations
             // Seeded roles list
             IList<IdentityRole> roles = new List<IdentityRole>()
             {
-                new IdentityRole(){ Name = "System Administrator"},
-                new IdentityRole(){ Name="Attorney General" },
-                new IdentityRole(){ Name = "Director of Department" },
-                new IdentityRole(){ Name = "Lawyer"}
+                new IdentityRole() {Name = "System Administrator"},
+                new IdentityRole() {Name = "Attorney General"},
+                new IdentityRole() {Name = "Director of Department"},
+                new IdentityRole() {Name = "Lawyer"}
             };
 
             // Creates new roles in database
@@ -63,6 +64,7 @@ namespace ministryofjusticeWebUi.Migrations
             {
                 UserName = "systemadmin@ministryofjustice.com",
                 Email = "systemadmin@ministryofjustice.com",
+                DepartmentId = 1,
                 EmailConfirmed = true
             };
 
@@ -74,6 +76,7 @@ namespace ministryofjusticeWebUi.Migrations
             {
                 UserName = "attorneygeneral@ministryofjustice.com",
                 Email = "attorneygeneral@ministryofjustice.com",
+                DepartmentId = 2,
                 EmailConfirmed = true
             };
 
@@ -82,6 +85,5 @@ namespace ministryofjusticeWebUi.Migrations
             result = manager.Create(attorney, "ASdf:lkj");
             if (result.Succeeded) manager.AddToRole(attorney.Id, "Attorney General");
         }
-
     }
 }

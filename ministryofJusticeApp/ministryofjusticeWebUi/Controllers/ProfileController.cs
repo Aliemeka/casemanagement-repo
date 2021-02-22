@@ -57,7 +57,7 @@ namespace ministryofjusticeWebUi.Controllers
                 {
                     var lawyer = Mapper.Map<ProfileViewModel, Lawyer>(model);
                     _unitOfWork.ProfileRepo.UpdateProfile(user, lawyer);
-                } 
+                }
                 else if (User.IsInRole("Attorney General"))
                 {
                     var ag = new AttorneyGeneral();
@@ -68,10 +68,13 @@ namespace ministryofjusticeWebUi.Controllers
                     var hod = new DepartmentHead();
                     _unitOfWork.ProfileRepo.UpdateProfile(user, null, null, hod);
                 }
-                else 
+                else
                     _unitOfWork.ProfileRepo.UpdateProfile(user);
+
                 return RedirectToAction("Index", "Dashboard");
-            };
+            }
+
+            ;
 
             result.Errors.ForEach(error => ModelState.AddModelError("", error));
             return View(model);

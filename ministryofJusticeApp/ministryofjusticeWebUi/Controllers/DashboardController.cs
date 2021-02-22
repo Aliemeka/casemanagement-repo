@@ -7,7 +7,7 @@ using ministryofjusticeDomain.Interfaces;
 
 namespace ministryofjusticeWebUi.Controllers
 {
-   [Authorize]
+    [Authorize]
     public class DashboardController : Controller
     {
         // GET: Dashboard/Index
