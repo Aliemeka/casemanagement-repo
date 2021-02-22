@@ -12,6 +12,7 @@ namespace ministryofjusticeWebUi.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Department name")]
         public string DepartmentName { get; set; }
     }
 }
