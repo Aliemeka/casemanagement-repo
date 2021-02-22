@@ -24,33 +24,33 @@
 
 <body id="page-top" class="nav-fixed">
 
-    @Html.Partial("_Navbar")
-    <div id="layoutSidenav">
-        @Html.Partial("_Sidebar")
-        <div id="layoutSidenav_content">
-            <main>
-                @RenderBody()
-            </main>
-            <footer class="footer mt-auto footer-light">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6 small">Copyright &#xA9; Your Website 2021</div>
-                        <div class="col-md-6 text-md-right small">
-                            <a href="#">Privacy Policy</a>
-                            &#xB7;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
+@Html.Partial("_Navbar")
+<div id="layoutSidenav">
+    @Html.Partial("_Sidebar")
+    <div id="layoutSidenav_content">
+        <main>
+            @RenderBody()
+        </main>
+        <footer class="footer mt-auto footer-light">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 small">Copyright &#xA9; Your Website 2021</div>
+                    <div class="col-md-6 text-md-right small">
+                        <a href="#">Privacy Policy</a>
+                        &#xB7;
+                        <a href="#">Terms &amp; Conditions</a>
                     </div>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
     </div>
+</div>
 
-    <!-- Logout Modal-->
-    @Html.Partial("_LogoutModal")
-    @Scripts.Render("~/Assets/scripts")
-    @Scripts.Render("Assets/plugins")
-    @RenderSection("scripts", required: false)
+<!-- Logout Modal-->
+@Html.Partial("_LogoutModal")
+@Scripts.Render("~/Assets/scripts")
+@Scripts.Render("Assets/plugins")
+@RenderSection("scripts", required: false)
 </body>
 
 </html>

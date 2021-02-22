@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
@@ -9,7 +8,9 @@
             <div class="row align-items-center justify-content-between pt-3">
                 <div class="col-auto mb-3">
                     <h1 class="page-header-title">
-                        <div class="page-header-icon"><i data-feather="user"></i></div>
+                        <div class="page-header-icon">
+                            <i data-feather="user"></i>
+                        </div>
                         Departments - @ViewBag.Title
                     </h1>
                 </div>
@@ -21,10 +22,10 @@
 <div class="container mt-4">
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
-        @Html.ActionLink("Manage Roles", "ManageRoles", "Role", null, new { @class = "nav-link ml-0" })
-        @Html.ActionLink("Add Role", "CreateRole", "Role", null, new { @class = "nav-link" })
+        @Html.ActionLink("Manage Roles", "ManageRoles", "Role", null, new {@class = "nav-link ml-0"})
+        @Html.ActionLink("Add Role", "CreateRole", "Role", null, new {@class = "nav-link"})
     </nav>
-    <hr class="mt-0 mb-4" />
+    <hr class="mt-0 mb-4"/>
     @RenderBody()
 </div>
 

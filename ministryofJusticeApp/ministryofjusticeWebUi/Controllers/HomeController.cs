@@ -8,10 +8,9 @@ namespace ministryofjusticeWebUi.Controllers
 {
     public class HomeController : Controller
     {
-       
         public ActionResult Index()
         {
-            if (User.IsInRole("System Administrator") 
+            if (User.IsInRole("System Administrator")
                 || User.IsInRole("Attorney General")
                 || User.IsInRole("Director of Department")
                 || User.IsInRole("Lawyer"))

@@ -7,8 +7,9 @@ namespace ministryofjusticeDomain.Interfaces
     {
         IEnumerable<Department> GetDepartments();
         void AddDepartment(Department department);
-        Department DeleteDepartment(byte departmentId);
-        Department GetDepartment(byte departmentId);
-        void AddUserToDepartment(string userId, byte departmentId);
+        void UpdateDepartment(Department department);
+        Department DeleteDepartment(int departmentId);
+        Department GetDepartment(int departmentId);
+        //void AddUserToDepartment(string userId, int departmentId);
     }
 }

@@ -13,7 +13,7 @@ namespace ministryofjusticeWebUi.Infrastructures
     {
         public MappingProfile()
         {
-            Mapper.CreateMap<Department, DepartmentViewModel>().ReverseMap().ForMember(dest => dest.Users, opt => opt.Ignore());
+            Mapper.CreateMap<Department, DepartmentViewModel>().ReverseMap();
             Mapper.CreateMap<ProfileViewModel, ApplicationUser>().ReverseMap();
             Mapper.CreateMap<ProfileViewModel, Lawyer>();
         }
