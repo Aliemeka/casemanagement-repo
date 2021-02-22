@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logoutForm" }))
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {@id = "logoutForm"}))
             {
                 @Html.AntiForgeryToken()
                 <div class="modal-footer">

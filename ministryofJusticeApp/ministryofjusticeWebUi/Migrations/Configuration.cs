@@ -1,13 +1,16 @@
+using System.Collections.Generic;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using ministryofjusticeDomain.Entities;
+
 namespace ministryofjusticeWebUi.Migrations
 {
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using ministryofjusticeDomain.Services;
-    using ministryofjusticeDomain.Entities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using ministryofjusticeDomain.IdentityEntities;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
@@ -16,7 +19,7 @@ namespace ministryofjusticeWebUi.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override async void Seed(ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -29,39 +32,51 @@ namespace ministryofjusticeWebUi.Migrations
                 new Department()
                 {
                     Id = 1,
-                    DepartmentName = "Administration"
+                    DepartmentName = "Criminal"
                 },
                 new Department()
                 {
                     Id = 2,
-                    DepartmentName = "Attorney General"
+                    DepartmentName = "Civil"
                 }
             );
 
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            var role = new RoleService(context);
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-            role.CreateRoles("System Administrator");
-            role.CreateRoles("Attorney General");
-            role.CreateRoles("Director of Department");
-            role.CreateRoles("Lawyer");
+            // Seeded roles list
+            IList<IdentityRole> roles = new List<IdentityRole>()
+            {
+                new IdentityRole() {Name = "System Administrator"},
+                new IdentityRole() {Name = "Attorney General"},
+                new IdentityRole() {Name = "Director of Department"},
+                new IdentityRole() {Name = "Lawyer"}
+            };
+
+            // Creates new roles in database
+            foreach (var role in roles)
+            {
+                if (!roleManager.RoleExists(role.Name))
+                    roleManager.Create(role);
+            }
 
             var systemAdmin = new ApplicationUser()
             {
                 UserName = "systemadmin@ministryofjustice.com",
                 Email = "systemadmin@ministryofjustice.com",
+                DepartmentId = 1,
                 EmailConfirmed = true
             };
 
             //Creates a User and assign it to the role of  System Admin
-            var result = manager.Create(systemAdmin, " " +
-                                                     "");
+            var result = manager.Create(systemAdmin, "ZAcwx5@");
             if (result.Succeeded) manager.AddToRole(systemAdmin.Id, "System Administrator");
 
             var attorney = new ApplicationUser()
             {
                 UserName = "attorneygeneral@ministryofjustice.com",
                 Email = "attorneygeneral@ministryofjustice.com",
+                DepartmentId = 2,
                 EmailConfirmed = true
             };
 

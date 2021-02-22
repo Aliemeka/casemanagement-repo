@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Welcome";
     Layout = "/Views/Shared/_DashboardLayout.cshtml";
+    var name = ViewBag.fullname;
 }
 
 <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -9,8 +10,8 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-auto mt-4">
                     <h1 class="page-header-title">
-                        <div class="page-header-icon"><i data-feather="file"></i></div>
-                        Welcome!
+                        <div class="page-header-icon"><i data-feather="home"></i></div>
+                        Welcome @name!
                     </h1>
                     <div class="page-header-subtitle">Use this blank page as a starting point for creating new pages inside your project!</div>
                 </div>
@@ -31,7 +32,7 @@
                             <h5>Powerful Components</h5>
                             <div class="text-muted small">To create informative visual elements on your pages</div>
                         </div>
-                        <img src="assets/img/illustrations/browser-stats.svg" alt="..." style="width: 8rem" />
+                        <img src="assets/img/illustrations/browser-stats.svg" alt="..." style="width: 8rem"/>
                     </div>
                 </div>
             </a>
@@ -46,7 +47,7 @@
                             <h5>Documentation</h5>
                             <div class="text-muted small">To keep you on track when working with our toolkit</div>
                         </div>
-                        <img src="assets/img/illustrations/processing.svg" alt="..." style="width: 8rem" />
+                        <img src="assets/img/illustrations/processing.svg" alt="..." style="width: 8rem"/>
                     </div>
                 </div>
             </a>
@@ -61,7 +62,7 @@
                             <h5>Pages &amp; Layouts</h5>
                             <div class="text-muted small">To help get you started when building your new UI</div>
                         </div>
-                        <img src="assets/img/illustrations/windows.svg" alt="..." style="width: 8rem" />
+                        <img src="assets/img/illustrations/windows.svg" alt="..." style="width: 8rem"/>
                     </div>
                 </div>
             </a>

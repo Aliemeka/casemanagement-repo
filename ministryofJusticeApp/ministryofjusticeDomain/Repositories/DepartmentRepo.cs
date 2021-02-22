@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
+using Microsoft.AspNet.Identity.Owin;
+using static System.Web.HttpContext;
 using ministryofjusticeDomain.Entities;
+using ministryofjusticeDomain.IdentityEntities;
 using ministryofjusticeDomain.Interfaces;
 
 namespace ministryofjusticeDomain.Repositories
@@ -10,15 +14,19 @@ namespace ministryofjusticeDomain.Repositories
     {
         private readonly ApplicationDbContext _context;
 
-        public DepartmentRepo(ApplicationDbContext context)
+        public DepartmentRepo()
         {
-            _context = context;
+            _context = Current.GetOwinContext().Get<ApplicationDbContext>();
         }
-        public Department AddDepartment(Department department)
+
+        public void AddDepartment(Department department)
         {
             _context.Departments.Add(department);
             _context.SaveChanges();
-            return department;
+        }
+        public void UpdateDepartment(Department department)
+        {
+           _context.SaveChanges();
         }
 
         /// <summary>
@@ -40,7 +48,7 @@ namespace ministryofjusticeDomain.Repositories
             }
         }
 
-        public Department DeleteDepartment(byte departmentId)
+        public Department DeleteDepartment(int departmentId)
         {
             var department = _context.Departments.Find(departmentId);
             if (department != null)
@@ -52,14 +60,17 @@ namespace ministryofjusticeDomain.Repositories
             return department;
         }
 
-        public Department GetDepartment(byte departmentId)
+        public Department GetDepartment(int departmentId)
         {
             return _context.Departments.Find(departmentId);
         }
 
+       
+
         public IEnumerable<Department> GetDepartments()
         {
-            return _context.Departments.ToList(); ;
+            return _context.Departments.ToList();
+            ;
         }
     }
 }

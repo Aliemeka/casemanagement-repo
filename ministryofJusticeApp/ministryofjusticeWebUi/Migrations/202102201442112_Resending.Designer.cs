@@ -7,13 +7,13 @@ namespace ministryofjusticeWebUi.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class RoleSeeding : IMigrationMetadata
+    public sealed partial class Resending : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RoleSeeding));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Resending));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102051423086_Role Seeding"; }
+            get { return "202102201442112_Resending"; }
         }
         
         string IMigrationMetadata.Source

@@ -2,15 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using ministryofjusticeDomain.Entities;
+using ministryofjusticeDomain.IdentityEntities;
 using ministryofjusticeDomain.Interfaces;
 using ministryofjusticeDomain.Repositories;
+using ministryofjusticeDomain.Services;
 
 namespace ministryofjusticeWebUi.Infrastructures
 {
     public class NinjectDependenceResolver : IDependencyResolver
     {
         private IKernel kernel;
+
         public NinjectDependenceResolver(IKernel kernelParam)
         {
             kernel = kernelParam;
@@ -33,7 +35,8 @@ namespace ministryofjusticeWebUi.Infrastructures
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
             kernel.Bind<IDepartmentRepo>().To<DepartmentRepo>();
             kernel.Bind<IUserManagerRepo>().To<UserManagerRepo>();
+            kernel.Bind<IProfileRepo>().To<ProfileRepo>();
+            kernel.Bind<IRoleService>().To<RoleService>();
         }
     }
-
 }

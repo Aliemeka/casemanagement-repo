@@ -6,9 +6,10 @@ namespace ministryofjusticeDomain.Interfaces
     public interface IDepartmentRepo
     {
         IEnumerable<Department> GetDepartments();
-        Department AddDepartment(Department department);
-        Department DeleteDepartment(byte departmentId);
-        Department GetDepartment(byte departmentId);
-        void AddUserToDepartment(string userId, byte departmentId);
+        void AddDepartment(Department department);
+        void UpdateDepartment(Department department);
+        Department DeleteDepartment(int departmentId);
+        Department GetDepartment(int departmentId);
+        //void AddUserToDepartment(string userId, int departmentId);
     }
 }

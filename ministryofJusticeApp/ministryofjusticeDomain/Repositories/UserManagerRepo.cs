@@ -1,25 +1,26 @@
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNet.Identity;
+using static System.Web.HttpContext;
 using Microsoft.AspNet.Identity.EntityFramework;
-using ministryofjusticeDomain.Entities;
+using Microsoft.AspNet.Identity.Owin;
+using ministryofjusticeDomain.IdentityEntities;
 using ministryofjusticeDomain.Interfaces;
 namespace ministryofjusticeDomain.Repositories
 {
     public class UserManagerRepo : IUserManagerRepo
     {
-        private readonly RoleManager<IdentityRole> _roleManager;
+       
         private readonly UserManager<ApplicationUser> _userManager;
 
         public UserManagerRepo(ApplicationDbContext context)
         {
-            _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            _userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            _userManager = Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
         }
-
+      
         /// <summary>
         /// Returns the list of all the users
         /// </summary>
@@ -45,77 +46,18 @@ namespace ministryofjusticeDomain.Repositories
             return result;
         }
 
-        /// <summary>
-        /// Gets a the roles
-        /// </summary>
-        /// <returns>Returns all roles</returns>
-        public IEnumerable<IdentityRole> GetRoles()
+        public async Task<ApplicationUser> GetUser(string email)
         {
-            return _roleManager.Roles;
+            return await _userManager.FindByEmailAsync(email);
         }
 
-        /// <summary>
-        /// Creates a role
-        /// </summary>
-        /// <param name="roleName"></param>
-        /// <returns></returns>
-        public async Task<IdentityResult> CreateRoleAsync(string roleName)
+        public async Task<IdentityResult> ChangePassword(string email, string oldPassword, string newPassword)
         {
-            if (_roleManager.RoleExists(roleName))
+            ApplicationUser user = await _userManager.FindByEmailAsync(email);
+            if (user != null)
             {
-                var role = new IdentityRole()
-                {
-                    Name = roleName,
-                }; 
-                
-                return await _roleManager.CreateAsync(role);
-            }
-            return IdentityResult.Failed();
-        }
-
-        /// <summary>
-        /// Deletes a role
-        /// </summary>
-        /// <param name="roleId"></param>
-        /// <returns></returns>
-        public async Task<IdentityResult> DeleteRoleAsync(string roleId)
-        {
-            var role = _roleManager.FindById(roleId);
-            if (role != null)
-            {
-                return await _roleManager.DeleteAsync(role);
-            }
-            return IdentityResult.Failed();
-        }
-
-        /// <summary>
-        /// Assigns a user to a role
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="roleId"></param>
-        /// <returns></returns>
-        public async Task<IdentityResult> AssignRoleAsync(string userId, string roleId)
-        {
-            var role = _roleManager.FindById(roleId);
-            if (role != null)
-            {
-                return await _userManager.AddToRoleAsync(userId, role.Name);
-            }
-            return IdentityResult.Failed();
-        }
-
-        /// <summary>
-        /// Removes a user from a role
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="roleId"></param>
-        /// <returns></returns>
-        public async Task<IdentityResult> RemoveRoleAsync(string userId, string roleId)
-        {
-            var role = _roleManager.FindById(roleId);
-            if (role != null)
-            {
-                return await _userManager.RemoveFromRoleAsync(userId, role.Name);
+                var result = await _userManager.ChangePasswordAsync(user.Id, oldPassword, newPassword);
+                return result;
             }
             return IdentityResult.Failed();
         }

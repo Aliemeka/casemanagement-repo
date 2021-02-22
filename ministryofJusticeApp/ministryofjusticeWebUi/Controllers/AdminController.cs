@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using ministryofjusticeDomain.Entities;
+using ministryofjusticeDomain.IdentityEntities;
 using ministryofjusticeDomain.Interfaces;
 using ministryofjusticeWebUi.Models;
 
@@ -16,10 +18,15 @@ namespace ministryofjusticeWebUi.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
 
+        public AdminController()
+        {
+        }
+
         public AdminController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
+
         // GET: Admin
         public ActionResult ManageAccounts()
         {
@@ -27,7 +34,7 @@ namespace ministryofjusticeWebUi.Controllers
             {
                 Department = _unitOfWork.DepartmentRepo.GetDepartments(),
                 Users = _unitOfWork.UserManagerRepo.GetAllUsers(),
-                Roles = _unitOfWork.UserManagerRepo.GetRoles()
+                Roles = _unitOfWork.RoleService.GetRoles()
             };
             return View(vm);
         }
@@ -38,10 +45,10 @@ namespace ministryofjusticeWebUi.Controllers
             var vm = new CreateAccountViewModel()
             {
                 Department = _unitOfWork.DepartmentRepo.GetDepartments(),
-                Roles =  _unitOfWork.UserManagerRepo.GetRoles()
+                Roles = _unitOfWork.RoleService.GetRoles()
             };
 
-           return View(vm);
+            return View(vm);
         }
 
         [HttpPost]
@@ -59,10 +66,11 @@ namespace ministryofjusticeWebUi.Controllers
                 var result = _unitOfWork.UserManagerRepo.CreateUser(user);
                 if (result.Succeeded)
                 {
-                    var roleResult = await _unitOfWork.UserManagerRepo.AssignRoleAsync(user.Id, model.RoleId);
+                    var roleResult = await _unitOfWork.RoleService.AssignRoleAsync(user.Id, model.RoleId);
                     if (roleResult.Succeeded) return RedirectToAction("ManageAccounts");
                 }
             }
+
             ModelState.AddModelError("", "Error creating account");
             return View(model);
         }

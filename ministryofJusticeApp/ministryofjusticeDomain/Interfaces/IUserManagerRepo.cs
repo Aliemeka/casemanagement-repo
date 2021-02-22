@@ -5,17 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ministryofjusticeDomain.Entities;
+using ministryofjusticeDomain.IdentityEntities;
 
 namespace ministryofjusticeDomain.Interfaces
 {
     public interface IUserManagerRepo
     {
+        Task<ApplicationUser> GetUser(string email);
+        Task<IdentityResult> ChangePassword(string email, string oldPassword, string newPassword);
         IEnumerable<ApplicationUser> GetAllUsers();
         IdentityResult CreateUser(ApplicationUser user);
-        IEnumerable<IdentityRole> GetRoles();
-        Task<IdentityResult> CreateRoleAsync(string roleName);
-        Task<IdentityResult> DeleteRoleAsync(string roleId);
-        Task<IdentityResult> AssignRoleAsync(string userId, string roleId);
-        Task<IdentityResult> RemoveRoleAsync(string userId, string roleId);
     }
 }
