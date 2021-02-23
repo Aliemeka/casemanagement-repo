@@ -26,7 +26,7 @@
                             <i data-feather="briefcase"></i>
                         </div>
                         <div class="d-flex flex-column font-weight-bold">
-                            <a class="text-dark line-height-normal mb-1" href="#!">@department.DepartmentName</a>
+                            <a class="text-dark line-height-normal mb-1" href="#!">@Html.ActionLink(@department.DepartmentName, "UpdateDepartment", "Department", new { id = department.Id }, null)</a>
                             <div class="small text-muted line-height-normal">@( department.Users != null ? $"{department.Users.Count()} members" : "No member") <i data-feather="users"></i></div>
                         </div>
                     </div>
