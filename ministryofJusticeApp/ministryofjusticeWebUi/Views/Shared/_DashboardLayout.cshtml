@@ -29,6 +29,10 @@
     @Html.Partial("_Sidebar")
     <div id="layoutSidenav_content">
         <main>
+            @if (TempData["Message"] !=  null)
+            {
+                <p> @TempData["Message"] </p>
+            }
             @RenderBody()
         </main>
         <footer class="footer mt-auto footer-light">
