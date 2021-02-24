@@ -33,16 +33,13 @@ namespace ministryofjusticeDomain.Repositories
 
         public IdentityResult CreateUser(ApplicationUser user)
         {
-            //generating user email address
-            // var email = user.FirstName.ToLower() + user.LastName.ToLower() + "@ministryofjustice.com";
-            // user.Email = email;
-            var existUser = _userManager.FindByEmail(user.Email);
-            if (existUser != null)
-            {
-                string[] errors = new[] {"Email is already registered!"};
-                return IdentityResult.Failed(errors);
+            //var existUser = _userManager.FindByEmail(user.Email);
+            //if (existUser != null)
+            //{
+              //  string[] errors = new[] {"Email is already registered!"};
+                //return IdentityResult.Failed(errors);
 
-            }
+            //}
             user.UserName = user.Email;
 
             //generating user password
@@ -50,6 +47,11 @@ namespace ministryofjusticeDomain.Repositories
 
             //create user
             var result = _userManager.Create(user, password);
+            if (!result.Succeeded)
+            {
+                string[] errors = new[] { $"Email '{user.Email}' is already registered!"};
+                return IdentityResult.Failed(errors);
+            }
             return result;
         }
 
