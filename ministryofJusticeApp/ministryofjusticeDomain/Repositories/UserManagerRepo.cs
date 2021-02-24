@@ -16,7 +16,7 @@ namespace ministryofjusticeDomain.Repositories
        
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public UserManagerRepo(ApplicationDbContext context)
+        public UserManagerRepo()
         {
             _userManager = Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
         }
@@ -34,9 +34,16 @@ namespace ministryofjusticeDomain.Repositories
         public IdentityResult CreateUser(ApplicationUser user)
         {
             //generating user email address
-            var email = user.FirstName.ToLower() + user.LastName.ToLower() + "@ministryofjustice.com";
-            user.Email = email;
-            user.UserName = email;
+            // var email = user.FirstName.ToLower() + user.LastName.ToLower() + "@ministryofjustice.com";
+            // user.Email = email;
+            var existUser = _userManager.FindByEmail(user.Email);
+            if (existUser != null)
+            {
+                string[] errors = new[] {"Email is already registered!"};
+                return IdentityResult.Failed(errors);
+
+            }
+            user.UserName = user.Email;
 
             //generating user password
             var password = user.FirstName.ToLower()+"123@MOJ"; 

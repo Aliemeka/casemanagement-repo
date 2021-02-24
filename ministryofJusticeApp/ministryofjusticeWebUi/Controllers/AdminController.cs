@@ -57,20 +57,23 @@ namespace ministryofjusticeWebUi.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser()
-                {
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    DepartmentId = model.DepartmentId
-                };
+                var user = Mapper.Map<CreateAccountViewModel, ApplicationUser>(model);
                 var result = _unitOfWork.UserManagerRepo.CreateUser(user);
                 if (result.Succeeded)
                 {
                     var roleResult = await _unitOfWork.RoleService.AssignRoleAsync(user.Id, model.RoleId);
                     if (roleResult.Succeeded) return RedirectToAction("ManageAccounts");
                 }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error);
+                    }
+                }
             }
-
+            model.Department = _unitOfWork.DepartmentRepo.GetDepartments();
+            model.Roles = _unitOfWork.RoleService.GetRoles();
             ModelState.AddModelError("", "Error creating account");
             return View(model);
         }

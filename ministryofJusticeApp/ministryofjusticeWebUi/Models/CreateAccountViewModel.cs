@@ -30,5 +30,9 @@ namespace ministryofjusticeWebUi.Models
         [Display(Name = "Last name")]
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use letters only please")]
         public string LastName { get; set; }
+
+        [Required]
+        [EmailAddress(ErrorMessage = "Please enter a valid email")]
+        public string Email { get; set; }
     }
 }

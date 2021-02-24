@@ -64,6 +64,5 @@ namespace ministryofjusticeDomain.Repositories
             return _context.Departments.ToList();
 
         }
-        public ApplicationDbContext ApplicationDbContext => _context as ApplicationDbContext;
     }
 }
