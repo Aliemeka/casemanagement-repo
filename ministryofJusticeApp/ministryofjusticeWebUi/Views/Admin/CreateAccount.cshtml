@@ -7,14 +7,14 @@
 <div class="card mb-4 col-md-8">
     <div class="card-header">Create Account</div>
     <div class="card-body">
-        @using (Html.BeginForm("CreateAccount", "Admin", null, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        @using (Html.BeginForm("CreateAccount", "Admin", null, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger small" })
             <!--First name-->
             <div class="form-group">
                 @Html.LabelFor(m => m.FirstName,
-                    new { @class = "col-md-6 control-label" })
+                    new {@class = "col-md-6 control-label"})
                 <div>
                     @Html.TextBoxFor(m => m.FirstName,
                         new
@@ -23,14 +23,14 @@
                             @id = "exampleInputEmail",
                             @placeholder = "Enter first name"
                         })
-                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger small" })
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new {@class = "text-danger small"})
                 </div>
             </div>
 
             <!--Last name-->
             <div class="form-group">
                 @Html.LabelFor(m => m.LastName,
-                    new { @class = "col-md-6 control-label" })
+                    new {@class = "col-md-6 control-label"})
                 <div>
                     @Html.TextBoxFor(m => m.LastName,
                         new
@@ -39,7 +39,7 @@
                             @id = "exampleInputPassword",
                             @placeholder = "Enter last name"
                         })
-                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger small" })
+                    @Html.ValidationMessageFor(m => m.LastName, "", new {@class = "text-danger small"})
                 </div>
             </div>
 

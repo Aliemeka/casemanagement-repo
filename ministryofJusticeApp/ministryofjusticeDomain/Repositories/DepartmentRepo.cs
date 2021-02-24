@@ -17,7 +17,7 @@ namespace ministryofjusticeDomain.Repositories
         public DepartmentRepo( ApplicationDbContext context)
             : base(context)
         {
-            _context = context;
+            _context = Current.GetOwinContext().Get<ApplicationDbContext>();
         }
 
        
@@ -58,11 +58,9 @@ namespace ministryofjusticeDomain.Repositories
         }
 
 
-
         public IEnumerable<Department> GetDepartments()
         {
             return _context.Departments.ToList();
-
         }
     }
 }

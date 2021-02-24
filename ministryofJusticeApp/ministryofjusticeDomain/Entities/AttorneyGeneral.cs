@@ -1,4 +1,5 @@
-﻿using ministryofjusticeDomain.IdentityEntities;
+using ministryofjusticeDomain.IdentityEntities;
+
 
 namespace ministryofjusticeDomain.Entities
 {
